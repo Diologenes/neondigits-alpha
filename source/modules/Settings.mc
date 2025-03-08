@@ -28,16 +28,15 @@ module Settings {
 
     // color themes
     _settings["colorTheme_lemon"] = 0xa0bf41;
-    _settings["colorTheme_orange"] = 0xC4BF5C;
-    _settings["colorTheme_yellow"] = 0xed7f2b;
-    _settings["colorTheme_mint"] = 0xede734;
-    _settings["colorTheme_gold"] = 0x00ff6e;
-    _settings["colorTheme_green"] = 0x1BE098;
-    _settings["colorTheme_red"] = 0x49678a;
-    _settings["colorTheme_blue"] = 0x349ded;
-    _settings["colorTheme_bluegray"] = 0xfc57ff;
-    _settings["colorTheme_pink"] = 0xEB3868;
-    _settings["colorTheme_purpur"] = 0xC43B3B;
+    _settings["colorTheme_gold"] = 0xC4BF5C;
+    _settings["colorTheme_orange"] = 0xed7f2b;
+    _settings["colorTheme_yellow"] = 0xede734;
+    _settings["colorTheme_green"] = 0x00ff6e;
+    _settings["colorTheme_mint"] = 0x1BE098;
+    _settings["colorTheme_bluegray"] = 0x49678a;
+    _settings["colorTheme_blue"] = 0x317cb5;
+    _settings["colorTheme_pink"] = 0xde456e;
+    _settings["colorTheme_red"] = 0xC43B3B;
 
     // base colors
     _settings["colorBlack"] = Graphics.COLOR_BLACK;

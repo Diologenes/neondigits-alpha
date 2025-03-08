@@ -9,9 +9,8 @@
             <listEntry value="0x00ff6e">@Strings.ThemeGreen</listEntry>
             <listEntry value="0x1BE098">@Strings.ThemeMint</listEntry>
             <listEntry value="0x49678a">@Strings.ThemeBlueGray</listEntry>
-            <listEntry value="0x349ded">@Strings.ThemeBlue</listEntry>
-            <listEntry value="0xfc57ff">@Strings.ThemePink</listEntry>
-            <listEntry value="0xEB3868">@Strings.ThemePurpur</listEntry>
+            <listEntry value="0x317cb5">@Strings.ThemeBlue</listEntry>
+            <listEntry value="0xde456e">@Strings.ThemePink</listEntry>
             <listEntry value="0xC43B3B">@Strings.ThemeRed</listEntry>
         </settingConfig>
     </setting>

@@ -121,16 +121,15 @@ class WatchSettingsDelegate extends WatchUi.Menu2InputDelegate {
   private function colorThemeMenu() {
     var menu = new WatchUi.Menu2({ :title => WatchUi.loadResource(Rez.Strings.SubmenuColorTheme) });
     menu.addItem(createMenuItem("colorTheme_lemon", Rez.Strings.ThemeLemon));
-    menu.addItem(createMenuItem("colorTheme_orange", Rez.Strings.ThemeGold));
-    menu.addItem(createMenuItem("colorTheme_yellow", Rez.Strings.ThemeOrange));
-    menu.addItem(createMenuItem("colorTheme_mint", Rez.Strings.ThemeYellow));
-    menu.addItem(createMenuItem("colorTheme_gold", Rez.Strings.ThemeGreen));
-    menu.addItem(createMenuItem("colorTheme_green", Rez.Strings.ThemeMint));
-    menu.addItem(createMenuItem("colorTheme_red", Rez.Strings.ThemeBlueGray));
+    menu.addItem(createMenuItem("colorTheme_gold", Rez.Strings.ThemeGold));
+    menu.addItem(createMenuItem("colorTheme_orange", Rez.Strings.ThemeOrange));
+    menu.addItem(createMenuItem("colorTheme_yellow", Rez.Strings.ThemeYellow));
+    menu.addItem(createMenuItem("colorTheme_green", Rez.Strings.ThemeGreen));
+    menu.addItem(createMenuItem("colorTheme_mint", Rez.Strings.ThemeMint));
+    menu.addItem(createMenuItem("colorTheme_bluegray", Rez.Strings.ThemeBlueGray));
     menu.addItem(createMenuItem("colorTheme_blue", Rez.Strings.ThemeBlue));
-    menu.addItem(createMenuItem("colorTheme_bluegray", Rez.Strings.ThemePink));
-    menu.addItem(createMenuItem("colorTheme_pink", Rez.Strings.ThemePurpur));
-    menu.addItem(createMenuItem("colorTheme_purpur", Rez.Strings.ThemeRed));
+    menu.addItem(createMenuItem("colorTheme_pink", Rez.Strings.ThemePink));
+    menu.addItem(createMenuItem("colorTheme_red", Rez.Strings.ThemeRed));
     WatchUi.pushView(menu, new WatchSettingsDelegate(), WatchUi.SLIDE_LEFT);
   } 
 
