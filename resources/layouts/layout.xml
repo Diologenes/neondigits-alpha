@@ -1,0 +1,17 @@
+<layout id="WatchFace">
+
+    <drawable id="Background" class="BackgroundComponent"></drawable>
+    
+    <drawable id="Time" class="TimeComponent"></drawable>
+    <drawable id="Date" class="DateComponent"></drawable>
+    <drawable id="Seconds" class="SecondsComponent"></drawable>
+
+    <drawable id="Weather" class="DataBottomLeftComponent"></drawable>
+    <drawable id="Battery" class="DataBottomRightComponent"></drawable>
+
+    <drawable id="DataTopLeft" class="DataTopLeftComponent"></drawable>
+    <drawable id="DataTopRight" class="DataTopRightComponent"></drawable>
+    <drawable id="DataBottom" class="DataBottomComponent"></drawable>
+    <drawable id="DataTop" class="DataTopComponent"></drawable>
+
+</layout>

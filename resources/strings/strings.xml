@@ -1,0 +1,42 @@
+<strings>
+    <string id="AppName">GFACE WatchFace</string>
+
+    <string id="ColorTheme">Theme</string>
+
+    <string id="ThemeLemon">Lemon (default)</string>
+    <string id="ThemeOrange">Orange</string>
+    <string id="ThemeYellow">Yellow</string>
+    <string id="ThemeMint">Mint</string>
+    <string id="ThemeGold">Gold</string>
+    <string id="ThemeGreen">Green</string>
+    <string id="ThemeRed">Red</string>
+    <string id="ThemeBlue">Blue</string>
+    <string id="ThemeBlueGray">Blue / Gray</string>
+    <string id="ThemePink">Pink</string>
+    <string id="ThemePurpur">Pupur</string>
+
+    <string id="UseSeconds">Enable Seconds</string>
+    <string id="UseBatteryPercentage">Battery in %</string>
+
+    <string id="DataFieldTypeTopLeft">Data: Top/Left</string>
+    <string id="DataFieldTypeTopRight">Data: Top/Right</string>
+
+    <string id="DataFieldValueCalories">Kilocalories (kCal)</string>
+    <string id="DataFieldValueDistance">Distance</string>
+    <string id="DataFieldValueSteps">Steps</string>
+    <string id="DataFieldValueBattery">Battery status</string>
+    <string id="DataFieldValueCurrentTemperature">Current Temperature</string>
+    <string id="DataFieldValueActiveMinutesDay">Active minutes (day)</string>
+
+    <string id="SettingsMenu">Einstellungen</string>
+    <string id="ToggleEnable">Enabled</string>
+    <string id="ToggleDisable">Disabled</string>
+    <string id="SubmenuColorTheme">Color Theme</string>
+    <string id="Saved">Saved</string>
+
+</strings>
+
+
+
+
+

@@ -1,0 +1,6 @@
+<fonts>
+  <font id="TimeFont" filename="aldrich_time_big.fnt" antialias="true" />
+  <font id="SecondsFont" filename="roboto_int.fnt" antialias="true" />
+  <font id="TextFont" filename="roboto_text.fnt" antialias="true" />
+  <font id="IconFont" filename="iconfont.fnt" antialias="true" />
+</fonts>

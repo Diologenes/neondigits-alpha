@@ -1,0 +1,42 @@
+<strings>
+    <string id="AppName">NeonDigits Alpha</string>
+
+    <string id="ColorTheme">Darstellung</string>
+
+    <string id="ThemeLemon">Gelb-Grün (Standard)</string>
+    <string id="ThemeOrange">Orange</string>
+    <string id="ThemeYellow">Gelb</string>
+    <string id="ThemeMint">Minze</string>
+    <string id="ThemeGold">Gold</string>
+    <string id="ThemeGreen">Grün</string>
+    <string id="ThemeRed">Rot</string>
+    <string id="ThemeBlue">Blau</string>
+    <string id="ThemeBlueGray">Blau-Grau</string>
+    <string id="ThemePink">Pink</string>
+    <string id="ThemePurpur">Pupur</string>
+
+    <string id="UseSeconds">Sekunden anzeigen</string>
+    <string id="UseBatteryPercentage">Batterie in %</string>
+
+    <string id="DataFieldTypeTopLeft">Daten: Oben/Links</string>
+    <string id="DataFieldTypeTopRight">Daten: Oben/Rechts</string>
+
+    <string id="DataFieldValueCalories">Kilokalorien (kCal)</string>
+    <string id="DataFieldValueDistance">Distanz in km</string>
+    <string id="DataFieldValueSteps">Schritte</string>
+    <string id="DataFieldValueBattery">Batterie-Status</string>
+    <string id="DataFieldValueCurrentTemperature">Aktuelle Temperatur</string>
+    <string id="DataFieldValueActiveMinutesDay">Aktivitätsminuten (am Tag)</string>
+
+    <string id="SettingsMenu">Einstellungen</string>
+    <string id="ToggleEnable">An</string>
+    <string id="ToggleDisable">Aus</string>
+    <string id="SubmenuColorTheme">Farbschema</string>
+    <string id="Saved">Gespeichert</string>
+
+</strings>
+
+
+
+
+

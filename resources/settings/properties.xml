@@ -1,0 +1,12 @@
+<properties>
+
+    <property id="colorTheme" type="number">0xa0bf41</property>
+    <property id="useSeconds" type="boolean">true</property>
+    <property id="useBatteryPercentage" type="boolean">false</property>
+
+    <property id="dataFieldTypeTopLeft" type="number">10</property>
+    <property id="dataFieldTypeTopRight" type="number">20</property>
+    <property id="dataFieldTypeBottomLeft" type="number">200</property>
+    <property id="dataFieldTypeBottomRight" type="number">300</property>
+
+</properties>

@@ -1,0 +1,45 @@
+<settings>
+
+    <setting propertyKey="@Properties.colorTheme" title="@Strings.ColorTheme">
+        <settingConfig type="list">
+            <listEntry value="0xa0bf41">@Strings.ThemeLemon</listEntry>
+            <listEntry value="0xC4BF5C">@Strings.ThemeGold</listEntry>
+            <listEntry value="0xed7f2b">@Strings.ThemeOrange</listEntry>
+            <listEntry value="0xede734">@Strings.ThemeYellow</listEntry>
+            <listEntry value="0x00ff6e">@Strings.ThemeGreen</listEntry>
+            <listEntry value="0x1BE098">@Strings.ThemeMint</listEntry>
+            <listEntry value="0x49678a">@Strings.ThemeBlueGray</listEntry>
+            <listEntry value="0x349ded">@Strings.ThemeBlue</listEntry>
+            <listEntry value="0xfc57ff">@Strings.ThemePink</listEntry>
+            <listEntry value="0xEB3868">@Strings.ThemePurpur</listEntry>
+            <listEntry value="0xC43B3B">@Strings.ThemeRed</listEntry>
+        </settingConfig>
+    </setting>
+
+    <setting propertyKey="@Properties.dataFieldTypeTopLeft" title="@Strings.DataFieldTypeTopLeft">
+        <settingConfig type="list">
+            <listEntry value="10">@Strings.DataFieldValueCalories</listEntry>
+            <listEntry value="20">@Strings.DataFieldValueSteps</listEntry>
+            <listEntry value="30">@Strings.DataFieldValueDistance</listEntry>
+            <listEntry value="40">@Strings.DataFieldValueActiveMinutesDay</listEntry>
+        </settingConfig>
+    </setting>
+
+    <setting propertyKey="@Properties.dataFieldTypeTopRight" title="@Strings.DataFieldTypeTopRight">
+        <settingConfig type="list">
+            <listEntry value="10">@Strings.DataFieldValueCalories</listEntry>
+            <listEntry value="20">@Strings.DataFieldValueSteps</listEntry>
+            <listEntry value="30">@Strings.DataFieldValueDistance</listEntry>
+            <listEntry value="40">@Strings.DataFieldValueActiveMinutesDay</listEntry>
+        </settingConfig>
+    </setting>
+
+    <setting propertyKey="@Properties.useSeconds" title="@Strings.UseSeconds">
+        <settingConfig type="boolean" />
+    </setting>
+
+    <setting propertyKey="@Properties.useBatteryPercentage" title="@Strings.UseBatteryPercentage">
+        <settingConfig type="boolean" />
+    </setting>
+
+</settings>
