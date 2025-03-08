@@ -1,5 +1,6 @@
 .vscode
 .project
+.DS_store
 /.idea
 /bin
 /export

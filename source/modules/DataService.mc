@@ -10,23 +10,39 @@ typedef DataFieldResponse as {
   :value as String or Null
 }; 
 
+enum {
+  FIELD_TYPE_CALORIES = 10,
+  FIELD_TYPE_STEPS = 20,
+  FIELD_TYPE_DISTANCE = 30,
+  FIELD_TYPE_ACTIVE_MINUTES_DAY = 40,
+  FIELD_TYPE_HEART_RATE = 50,
+  FIELD_TYPE_CURRENT_TEMPERATURE = 200,
+  FIELD_TYPE_BATTERY_STATUS = 300,
+
+  ARC_TYPE_SECONDS_CIRCLE = 1000,
+  ARC_TYPE_SECONDS_DOT = 1010,
+  ARC_TYPE_DAY = 1020,
+  ARC_TYPE_DISABLED = 1099
+
+}
+
 module DataService {
 
   function getDataByFieldType(fieldType) as DataFieldResponse or Null {
     switch(fieldType) {
-      case 10: 
+      case FIELD_TYPE_CALORIES: 
         return getCalories();          
-      case 20: 
+      case FIELD_TYPE_STEPS: 
         return getSteps();  
-      case 30: 
+      case FIELD_TYPE_DISTANCE: 
         return getDistance();            
-      case 40: 
+      case FIELD_TYPE_ACTIVE_MINUTES_DAY: 
         return getActiveMinutesDay();  
-      case 50: 
+      case FIELD_TYPE_HEART_RATE: 
         return getHeatRate();           
-      case 200: 
+      case FIELD_TYPE_CURRENT_TEMPERATURE: 
         return getCurrentTemperature();
-      case 300: 
+      case FIELD_TYPE_BATTERY_STATUS: 
         return getBatteryStatus();        
     }
     return null;

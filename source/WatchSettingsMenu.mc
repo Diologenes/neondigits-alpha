@@ -34,6 +34,7 @@ class WatchSettingsMenu extends WatchUi.Menu2 {
 
     Menu2.addItem(createMenuItem("submenuDataTopRight", Rez.Strings.DataFieldTypeTopRight));
 
+    Menu2.addItem(createMenuItem("submenuArcType", Rez.Strings.ArcType));
   }
 
 }
@@ -54,6 +55,12 @@ class WatchSettingsDelegate extends WatchUi.Menu2InputDelegate {
         return;
     } 
     
+    // on arc type menu click
+    if (menuId.equals("submenuArcType")) {
+      arcTypeMenu();
+      return;
+    }
+
     // on color theme menu click
     if (menuId.equals("submenuTheme")) {
       colorThemeMenu();
@@ -69,6 +76,14 @@ class WatchSettingsDelegate extends WatchUi.Menu2InputDelegate {
     // on submenuDataTopRight
     if (menuId.equals("submenuDataTopRight")) {
       dataTopRightMenu();
+      return;
+    }
+
+        // on arc type selection
+    if (menuId.toString().find("arcType_") != null) {
+      Settings.set("arcType", getValueFromString(menuId.toString()).toNumber());
+      WatchUi.showToast(WatchUi.loadResource(Rez.Strings.Saved), null);
+      onBack();
       return;
     }
 
@@ -96,6 +111,12 @@ class WatchSettingsDelegate extends WatchUi.Menu2InputDelegate {
       return;
     }
   }
+
+  private function arcTypeMenu() {
+    var menu = new WatchUi.Menu2({ :title => WatchUi.loadResource(Rez.Strings.ArcType) });
+    getSelectableArcTypes(menu, "arcType");
+    WatchUi.pushView(menu, new WatchSettingsDelegate(), WatchUi.SLIDE_LEFT);
+  } 
 
   private function colorThemeMenu() {
     var menu = new WatchUi.Menu2({ :title => WatchUi.loadResource(Rez.Strings.SubmenuColorTheme) });
@@ -139,10 +160,17 @@ function toggleItem(id, label, enabledLabel, disabledLabel) {
 }
 
 function getSelectableDataSets(menu, position as String) {
-  menu.addItem(createMenuItem(position + "_10", Rez.Strings.DataFieldValueCalories));
-  menu.addItem(createMenuItem(position + "_20", Rez.Strings.DataFieldValueSteps));
-  menu.addItem(createMenuItem(position + "_30", Rez.Strings.DataFieldValueDistance));
-  menu.addItem(createMenuItem(position + "_40", Rez.Strings.DataFieldValueActiveMinutesDay));
+  menu.addItem(createMenuItem(position + "_" + FIELD_TYPE_CALORIES, Rez.Strings.DataFieldValueCalories));
+  menu.addItem(createMenuItem(position + "_" + FIELD_TYPE_STEPS, Rez.Strings.DataFieldValueSteps));
+  menu.addItem(createMenuItem(position + "_" + FIELD_TYPE_DISTANCE, Rez.Strings.DataFieldValueDistance));
+  menu.addItem(createMenuItem(position + "_" + FIELD_TYPE_ACTIVE_MINUTES_DAY, Rez.Strings.DataFieldValueActiveMinutesDay));
+}
+
+function getSelectableArcTypes(menu, position as String) {
+  menu.addItem(createMenuItem(position + "_" + ARC_TYPE_SECONDS_CIRCLE, Rez.Strings.ArcTypeSecondsCircle));
+  menu.addItem(createMenuItem(position + "_" + ARC_TYPE_SECONDS_DOT, Rez.Strings.ArcTypeSecondsDot));
+  menu.addItem(createMenuItem(position + "_" + ARC_TYPE_DAY, Rez.Strings.ArcTypeDay));
+  menu.addItem(createMenuItem(position + "_" + ARC_TYPE_DISABLED, Rez.Strings.ArcTypeDisabled));
 }
 
 function getValueFromString(stringValue as String) {

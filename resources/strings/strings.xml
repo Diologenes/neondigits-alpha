@@ -1,5 +1,5 @@
 <strings>
-    <string id="AppName">GFACE WatchFace</string>
+    <string id="AppName">NeonDigits Alpha</string>
 
     <string id="ColorTheme">Theme</string>
 
@@ -28,11 +28,19 @@
     <string id="DataFieldValueCurrentTemperature">Current Temperature</string>
     <string id="DataFieldValueActiveMinutesDay">Active minutes (day)</string>
 
+    <string id="ArcType">Arc-Type</string>
+    <string id="ArcTypeSecondsCircle">Seconds-Cycle: Full Circle</string>
+    <string id="ArcTypeSecondsDot">Seconds-Cycle: Dot</string>
+    <string id="ArcTypeDay">Day-Cycle</string>
+    <string id="ArcTypeDisabled">Disabled</string>
+
     <string id="SettingsMenu">Einstellungen</string>
     <string id="ToggleEnable">Enabled</string>
     <string id="ToggleDisable">Disabled</string>
     <string id="SubmenuColorTheme">Color Theme</string>
+    
     <string id="Saved">Saved</string>
+
 
 </strings>
 

@@ -42,7 +42,7 @@ module Settings {
     // base colors
     _settings["colorBlack"] = Graphics.COLOR_BLACK;
     _settings["colorWhite"] = Graphics.createColor(250, 190, 190, 190);
-    _settings["colorValue"] = Graphics.createColor(255, 130, 130, 130);
+    _settings["colorValue"] = Graphics.createColor(255, 140, 140, 140);
     _settings["colorGrayLight"] = Graphics.createColor(255, 110, 110, 110);
     _settings["colorGrayDark"] = Graphics.createColor(255, 80, 80, 80);
     _settings["colorWarning"] = Graphics.createColor(245, 185, 160, 60);
@@ -53,9 +53,9 @@ module Settings {
     _settings["highPowerMode"] = true;
 
     // data types
-    _settings["dataFieldTypeBottomLeft"] = 200;
-    _settings["dataFieldTypeBottomRight"] = 300;
-    _settings["dataFieldTypeBottom"] = 50;
+    _settings["dataFieldTypeBottomLeft"] = FIELD_TYPE_CURRENT_TEMPERATURE;
+    _settings["dataFieldTypeBottomRight"] = FIELD_TYPE_BATTERY_STATUS;
+    _settings["dataFieldTypeBottom"] = FIELD_TYPE_HEART_RATE;
 
     loadProps();
   }
@@ -67,6 +67,7 @@ module Settings {
     _settings["useBatteryPercentage"] = Application.Properties.getValue("useBatteryPercentage") as Boolean;
     _settings["dataFieldTypeTopLeft"] = Application.Properties.getValue("dataFieldTypeTopLeft") as Number;
     _settings["dataFieldTypeTopRight"] = Application.Properties.getValue("dataFieldTypeTopRight") as Number;
+    _settings["arcType"] = Application.Properties.getValue("arcType") as Number;
   }
 
   function get(key as String) {

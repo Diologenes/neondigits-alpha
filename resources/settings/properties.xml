@@ -9,4 +9,6 @@
     <property id="dataFieldTypeBottomLeft" type="number">200</property>
     <property id="dataFieldTypeBottomRight" type="number">300</property>
 
+    <property id="arcType" type="number">1000</property>
+
 </properties>

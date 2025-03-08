@@ -12,6 +12,6 @@
     <drawable id="DataTopLeft" class="DataTopLeftComponent"></drawable>
     <drawable id="DataTopRight" class="DataTopRightComponent"></drawable>
     <drawable id="DataBottom" class="DataBottomComponent"></drawable>
-    <drawable id="DataTop" class="DataTopComponent"></drawable>
+    <drawable id="Arc" class="ArcComponent"></drawable>
 
 </layout>

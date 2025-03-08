@@ -1,4 +1,4 @@
-# Garmin Watch Face NeoDigit Alpha
+# Garmin Watch Face NeonDigits Alpha
 
 Customizable digital watchface for the following Garmin watches:
 
@@ -8,7 +8,9 @@ Customizable digital watchface for the following Garmin watches:
 - Venu 2
 - Venu 2 Plus
 - Venu 3
-- venu 3S
+- Venu 3S
+- Forerunner 265
+- Forerunner 965
 
 ### Features
 

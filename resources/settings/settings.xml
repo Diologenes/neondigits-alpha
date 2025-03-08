@@ -34,6 +34,15 @@
         </settingConfig>
     </setting>
 
+    <setting propertyKey="@Properties.arcType" title="@Strings.ArcType">
+        <settingConfig type="list">
+            <listEntry value="1000">@Strings.ArcTypeSecondsCircle</listEntry>
+            <listEntry value="1010">@Strings.ArcTypeSecondsDot</listEntry>
+            <listEntry value="1020">@Strings.ArcTypeDay</listEntry>
+            <listEntry value="1099">@Strings.ArcTypeDisabled</listEntry>
+        </settingConfig>
+    </setting>
+
     <setting propertyKey="@Properties.useSeconds" title="@Strings.UseSeconds">
         <settingConfig type="boolean" />
     </setting>

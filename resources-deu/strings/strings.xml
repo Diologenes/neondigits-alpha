@@ -28,6 +28,12 @@
     <string id="DataFieldValueCurrentTemperature">Aktuelle Temperatur</string>
     <string id="DataFieldValueActiveMinutesDay">Aktivitätsminuten (am Tag)</string>
 
+    <string id="ArcType">Bogen-Stil</string>
+    <string id="ArcTypeSecondsCircle">Sekunden-Zyklus (Kreis)</string>
+    <string id="ArcTypeSecondsDot">Sekunden-Zyklus (Punkt)</string>
+    <string id="ArcTypeDay">Tages-Zyklus</string>
+    <string id="ArcTypeDisabled">Deaktiviert</string>
+
     <string id="SettingsMenu">Einstellungen</string>
     <string id="ToggleEnable">An</string>
     <string id="ToggleDisable">Aus</string>
