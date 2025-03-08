@@ -24,7 +24,7 @@ Customizable digital watchface for the following Garmin watches:
 - Current temperature
 - Battery status
 - Heartrate
-- Arc (24 h)
+- Arc / Cycle (24 h / 60 sec)
 - AOD Mode with burn-in protection
 - All settings can be configured without the "Connect IQ" app inside the watch
 
