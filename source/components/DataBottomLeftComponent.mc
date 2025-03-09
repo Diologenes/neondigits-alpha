@@ -15,7 +15,7 @@ class DataBottomLeftComponent extends DataAbstractComponent {
   }
 
   private function getXOffset() {
-    return Settings.get("useSeconds") ? -60 : -25;
+    return Settings.get("useSeconds") ? -65 : -25;
   }
 
 }

@@ -28,6 +28,8 @@
     <string id="DataFieldValueBattery">Batterie-Status</string>
     <string id="DataFieldValueCurrentTemperature">Aktuelle Temperatur</string>
     <string id="DataFieldValueActiveMinutesDay">Aktivitätsminuten (am Tag)</string>
+    <string id="DataFieldValueStressScore">Stress-Level</string>
+    <string id="DataFieldValueTimeToRecovery">Erholungsdauer (in Std.)</string>
 
     <string id="ArcType">Bogen-Stil</string>
     <string id="ArcTypeSecondsCircle">Sekunden-Zyklus (Kreis)</string>

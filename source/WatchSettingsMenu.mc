@@ -186,6 +186,7 @@ function getSelectableDataSets(menu, position as String) {
   menu.addItem(createMenuItem(position + "_" + FIELD_TYPE_DISTANCE, Rez.Strings.DataFieldValueDistance));
   menu.addItem(createMenuItem(position + "_" + FIELD_TYPE_ACTIVE_MINUTES_DAY, Rez.Strings.DataFieldValueActiveMinutesDay));
   menu.addItem(createMenuItem(position + "_" + FIELD_TYPE_CURRENT_TEMPERATURE, Rez.Strings.DataFieldValueCurrentTemperature));
+  menu.addItem(createMenuItem(position + "_" + FIELD_TYPE_TIME_TO_RECOVERY, Rez.Strings.DataFieldValueTimeToRecovery));
 }
 
 function getSelectableArcTypes(menu, position as String) {

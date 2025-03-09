@@ -21,6 +21,7 @@
             <listEntry value="20">@Strings.DataFieldValueSteps</listEntry>
             <listEntry value="30">@Strings.DataFieldValueDistance</listEntry>
             <listEntry value="40">@Strings.DataFieldValueActiveMinutesDay</listEntry>
+            <listEntry value="70">@Strings.DataFieldValueTimeToRecovery</listEntry>
             <listEntry value="200">@Strings.DataFieldValueCurrentTemperature</listEntry>
         </settingConfig>
     </setting>
@@ -31,6 +32,7 @@
             <listEntry value="20">@Strings.DataFieldValueSteps</listEntry>
             <listEntry value="30">@Strings.DataFieldValueDistance</listEntry>
             <listEntry value="40">@Strings.DataFieldValueActiveMinutesDay</listEntry>
+            <listEntry value="70">@Strings.DataFieldValueTimeToRecovery</listEntry>
             <listEntry value="200">@Strings.DataFieldValueCurrentTemperature</listEntry>
         </settingConfig>
     </setting>
@@ -41,6 +43,7 @@
             <listEntry value="20">@Strings.DataFieldValueSteps</listEntry>
             <listEntry value="30">@Strings.DataFieldValueDistance</listEntry>
             <listEntry value="40">@Strings.DataFieldValueActiveMinutesDay</listEntry>
+            <listEntry value="70">@Strings.DataFieldValueTimeToRecovery</listEntry>
             <listEntry value="200">@Strings.DataFieldValueCurrentTemperature</listEntry>
         </settingConfig>
     </setting>

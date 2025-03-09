@@ -24,7 +24,7 @@ class BackgroundComponent extends WatchUi.Drawable {
   }
 
   function draw(dc) {
-    if (Settings.get("highPowerMode") == false) {
+    if (Settings.get("highPowerMode")) {
       self.dc = dc;
       drawStaticBackground();
     }

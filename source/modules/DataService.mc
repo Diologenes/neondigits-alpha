@@ -16,6 +16,8 @@ enum {
   FIELD_TYPE_DISTANCE = 30,
   FIELD_TYPE_ACTIVE_MINUTES_DAY = 40,
   FIELD_TYPE_HEART_RATE = 50,
+  FIELD_TYPE_STRESS_SCORE = 60,
+  FIELD_TYPE_TIME_TO_RECOVERY = 70,
   FIELD_TYPE_CURRENT_TEMPERATURE = 200,
   FIELD_TYPE_BATTERY_STATUS = 300,
 
@@ -42,7 +44,11 @@ module DataService {
       case FIELD_TYPE_CURRENT_TEMPERATURE: 
         return getCurrentTemperature();
       case FIELD_TYPE_BATTERY_STATUS: 
-        return getBatteryStatus();        
+        return getBatteryStatus();
+      case FIELD_TYPE_STRESS_SCORE: 
+        return getStressScore();    
+      case FIELD_TYPE_TIME_TO_RECOVERY: 
+        return getTimeToRecovery();   
     }
     return null;
   }
@@ -110,6 +116,30 @@ module DataService {
       :icon => "steps",
       :iconColor => Settings.get("colorValue"),
       :value => ActivityMonitor.getInfo().steps
+    };
+  }
+
+  function getStressScore() {
+    return {
+      :icon => "steps",
+      :iconColor => Settings.get("colorValue"),
+      :value => ActivityMonitor.getInfo().stressScore
+    };
+  }
+
+  function getTimeToRecovery() {
+    var timeToRecovery = ActivityMonitor.getInfo().timeToRecovery;
+    var value = ""; 
+    if (timeToRecovery) {
+      value = timeToRecovery + " h";
+    } else {
+      value = "--";
+    }
+
+    return {
+      :icon => "notification",
+      :iconColor => Settings.get("colorValue"),
+      :value => value
     };
   }
 
