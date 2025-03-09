@@ -27,7 +27,7 @@ class SecondsComponent extends WatchUi.Drawable {
     colorGrayDark = Settings.get("colorGrayDark");
     colorTransparent = Settings.get("colorTransparent");
     colorValue = Settings.get("colorValue");
-    font = Settings.getSecondsFont();
+    font = Settings.get("fontSeconds");
   }
 
   function draw(dc as Dc) {

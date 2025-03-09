@@ -20,7 +20,7 @@ class DataAbstractComponent extends WatchUi.Drawable {
 
   function initialize(params) { 
     WatchUi.Drawable.initialize(params); 
-    textFont = Settings.getTextFont();
+    textFont = Settings.get("fontText");
     centerX = Settings.get("centerX");
     centerY = Settings.get("centerY");
     colorValue = Settings.get("colorValue");

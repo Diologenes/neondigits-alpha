@@ -22,7 +22,7 @@ class TimeComponent extends WatchUi.Drawable {
     colorDefault = Settings.get("colorGrayLight");
     colorWhite = Settings.get("colorWhite");
     colorTransparent = Settings.get("colorTransparent");
-    font = Settings.getTimeFont();
+    font = Settings.get("fontTime");
   }
 
   function draw(dc as Dc) {

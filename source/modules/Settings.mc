@@ -5,13 +5,18 @@ import Toybox.Graphics;
 
 module Settings {
 
-  var _settings as Dictionary<String, Object> = {};
+  var _settings as Dictionary<String, Object | Null> = {};
 
   function initialize() {
     var width = System.getDeviceSettings().screenWidth;
     var height = System.getDeviceSettings().screenHeight;
     var centerX = width / 2;
     var centerY = height / 2;
+
+    // fonts 
+    _settings["fontTime"] = Application.loadResource(Rez.Fonts.TimeFont);
+    _settings["fontSeconds"] = Application.loadResource(Rez.Fonts.SecondsFont);
+    _settings["fontText"] = Application.loadResource(Rez.Fonts.TextFont);
 
     // misc
     _settings["updateInterval"] = 3;
@@ -76,18 +81,6 @@ module Settings {
   function set(key, value) {
     Application.Properties.setValue(key, value);
     _settings[key] = value;
-  }
-
-  function getTimeFont() {
-    return Application.loadResource(Rez.Fonts.TimeFont);
-  }
-
-  function getSecondsFont() {
-    return Application.loadResource(Rez.Fonts.SecondsFont);
-  }
-
-  function getTextFont() {
-    return Application.loadResource(Rez.Fonts.TextFont);
   }
 
   function setHighPowerMode(value as Boolean) {

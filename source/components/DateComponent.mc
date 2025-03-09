@@ -20,7 +20,7 @@ class DateComponent extends WatchUi.Drawable {
     yOffsetLine2 = Settings.get("yOffsetLine2");
     colorValue = Settings.get("colorValue");
     colorTransparent = Settings.get("colorTransparent");    
-    font = Settings.getTextFont();
+    font = Settings.get("fontText");
   }
 
   function draw(dc) {  

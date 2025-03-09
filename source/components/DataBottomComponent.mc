@@ -26,7 +26,7 @@ class DataBottomComponent extends WatchUi.Drawable {
     height = Settings.get("height");
     colorTransparent = Settings.get("colorTransparent");
     colorValue = Settings.get("colorValue");
-    font = Settings.getTextFont();
+    font = Settings.get("fontText");
     updateInterval = Settings.get("updateInterval");
   }
 

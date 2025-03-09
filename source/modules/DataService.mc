@@ -23,7 +23,6 @@ enum {
   ARC_TYPE_SECONDS_DOT = 1010,
   ARC_TYPE_DAY = 1020,
   ARC_TYPE_DISABLED = 1099
-
 }
 
 module DataService {
