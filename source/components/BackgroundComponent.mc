@@ -24,15 +24,13 @@ class BackgroundComponent extends WatchUi.Drawable {
   }
 
   function draw(dc) {
-    self.dc = dc;
-    drawStaticBackground();
+    if (Settings.get("highPowerMode") == false) {
+      self.dc = dc;
+      drawStaticBackground();
+    }
   }
 
   private function drawStaticBackground() {
-    if (Settings.get("highPowerMode") == false) {
-      return;
-    }
-
     self.dc.setColor(colorForeground, colorBackground);
     
     self.hDividers();

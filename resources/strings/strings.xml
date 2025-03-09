@@ -20,6 +20,7 @@
 
     <string id="DataFieldTypeTopLeft">Data: Top/Left</string>
     <string id="DataFieldTypeTopRight">Data: Top/Right</string>
+    <string id="DataFieldTypeBottomLeft">Data: Bottom/Left</string>
 
     <string id="DataFieldValueCalories">Kilocalories (kCal)</string>
     <string id="DataFieldValueDistance">Distance</string>

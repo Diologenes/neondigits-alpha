@@ -21,6 +21,7 @@
             <listEntry value="20">@Strings.DataFieldValueSteps</listEntry>
             <listEntry value="30">@Strings.DataFieldValueDistance</listEntry>
             <listEntry value="40">@Strings.DataFieldValueActiveMinutesDay</listEntry>
+            <listEntry value="200">@Strings.DataFieldValueCurrentTemperature</listEntry>
         </settingConfig>
     </setting>
 
@@ -30,6 +31,17 @@
             <listEntry value="20">@Strings.DataFieldValueSteps</listEntry>
             <listEntry value="30">@Strings.DataFieldValueDistance</listEntry>
             <listEntry value="40">@Strings.DataFieldValueActiveMinutesDay</listEntry>
+            <listEntry value="200">@Strings.DataFieldValueCurrentTemperature</listEntry>
+        </settingConfig>
+    </setting>
+
+    <setting propertyKey="@Properties.dataFieldTypeBottomLeft" title="@Strings.DataFieldTypeBottomLeft">
+        <settingConfig type="list">
+            <listEntry value="10">@Strings.DataFieldValueCalories</listEntry>
+            <listEntry value="20">@Strings.DataFieldValueSteps</listEntry>
+            <listEntry value="30">@Strings.DataFieldValueDistance</listEntry>
+            <listEntry value="40">@Strings.DataFieldValueActiveMinutesDay</listEntry>
+            <listEntry value="200">@Strings.DataFieldValueCurrentTemperature</listEntry>
         </settingConfig>
     </setting>
 

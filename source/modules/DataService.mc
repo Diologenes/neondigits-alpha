@@ -92,9 +92,9 @@ module DataService {
     if (distance != null) {
       var distanceKm = Utilities.cmToKm(distance);
       if (useMetricSystem) {
-        value = distanceKm.format("%.2f") + " km";
+        value = distanceKm.format("%.1f") + " km";
       } else {
-        value = Utilities.kilometersToMiles(distanceKm).format("%.2f") + " mi";
+        value = Utilities.kilometersToMiles(distanceKm).format("%.1f") + " mi";
       }
     }
  

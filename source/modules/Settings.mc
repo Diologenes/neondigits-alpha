@@ -56,8 +56,7 @@ module Settings {
     // switches
     _settings["highPowerMode"] = true;
 
-    // data types
-    _settings["dataFieldTypeBottomLeft"] = FIELD_TYPE_CURRENT_TEMPERATURE;
+    // fixed data types
     _settings["dataFieldTypeBottomRight"] = FIELD_TYPE_BATTERY_STATUS;
     _settings["dataFieldTypeBottom"] = FIELD_TYPE_HEART_RATE;
 
@@ -71,6 +70,7 @@ module Settings {
     _settings["useBatteryPercentage"] = Application.Properties.getValue("useBatteryPercentage") as Boolean;
     _settings["dataFieldTypeTopLeft"] = Application.Properties.getValue("dataFieldTypeTopLeft") as Number;
     _settings["dataFieldTypeTopRight"] = Application.Properties.getValue("dataFieldTypeTopRight") as Number;
+    _settings["dataFieldTypeBottomLeft"] = Application.Properties.getValue("dataFieldTypeBottomLeft") as Number;
     _settings["arcType"] = Application.Properties.getValue("arcType") as Number;
   }
 

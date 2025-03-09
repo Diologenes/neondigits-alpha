@@ -20,6 +20,7 @@
 
     <string id="DataFieldTypeTopLeft">Daten: Oben/Links</string>
     <string id="DataFieldTypeTopRight">Daten: Oben/Rechts</string>
+    <string id="DataFieldTypeBottomLeft">Data: Unten/Links</string>
 
     <string id="DataFieldValueCalories">Kilokalorien (kCal)</string>
     <string id="DataFieldValueDistance">Distanz in km</string>

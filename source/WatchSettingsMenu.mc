@@ -34,6 +34,8 @@ class WatchSettingsMenu extends WatchUi.Menu2 {
 
     Menu2.addItem(createMenuItem("submenuDataTopRight", Rez.Strings.DataFieldTypeTopRight));
 
+    Menu2.addItem(createMenuItem("submenuDataBottomLeft", Rez.Strings.DataFieldTypeBottomLeft));
+
     Menu2.addItem(createMenuItem("submenuArcType", Rez.Strings.ArcType));
   }
 
@@ -79,6 +81,12 @@ class WatchSettingsDelegate extends WatchUi.Menu2InputDelegate {
       return;
     }
 
+    // on submenuDataBottomLeft
+    if (menuId.equals("submenuDataBottomLeft")) {
+      dataBottomLeftMenu();
+      return;
+    }
+
         // on arc type selection
     if (menuId.toString().find("arcType_") != null) {
       Settings.set("arcType", getValueFromString(menuId.toString()).toNumber());
@@ -106,6 +114,14 @@ class WatchSettingsDelegate extends WatchUi.Menu2InputDelegate {
     // on data top right selection
     if (menuId.toString().find("dataFieldTypeTopRight_") != null) {
       Settings.set("dataFieldTypeTopRight", getValueFromString(menuId.toString()).toNumber());
+      WatchUi.showToast(WatchUi.loadResource(Rez.Strings.Saved), null);
+      onBack();
+      return;
+    }
+
+    // on data bottom left selection
+    if (menuId.toString().find("dataFieldTypeBottomLeft_") != null) {
+      Settings.set("dataFieldTypeBottomLeft", getValueFromString(menuId.toString()).toNumber());
       WatchUi.showToast(WatchUi.loadResource(Rez.Strings.Saved), null);
       onBack();
       return;
@@ -145,6 +161,12 @@ class WatchSettingsDelegate extends WatchUi.Menu2InputDelegate {
     WatchUi.pushView(menu, new WatchSettingsDelegate(), WatchUi.SLIDE_LEFT);
   } 
 
+  private function dataBottomLeftMenu() {
+    var menu = new WatchUi.Menu2({ :title => WatchUi.loadResource(Rez.Strings.DataFieldTypeBottomLeft) });
+    getSelectableDataSets(menu, "dataFieldTypeBottomLeft");
+    WatchUi.pushView(menu, new WatchSettingsDelegate(), WatchUi.SLIDE_LEFT);
+  } 
+
   function onBack() {
     WatchUi.popView(WatchUi.SLIDE_RIGHT);
   }
@@ -163,6 +185,7 @@ function getSelectableDataSets(menu, position as String) {
   menu.addItem(createMenuItem(position + "_" + FIELD_TYPE_STEPS, Rez.Strings.DataFieldValueSteps));
   menu.addItem(createMenuItem(position + "_" + FIELD_TYPE_DISTANCE, Rez.Strings.DataFieldValueDistance));
   menu.addItem(createMenuItem(position + "_" + FIELD_TYPE_ACTIVE_MINUTES_DAY, Rez.Strings.DataFieldValueActiveMinutesDay));
+  menu.addItem(createMenuItem(position + "_" + FIELD_TYPE_CURRENT_TEMPERATURE, Rez.Strings.DataFieldValueCurrentTemperature));
 }
 
 function getSelectableArcTypes(menu, position as String) {
