@@ -21,10 +21,9 @@ enum {
   FIELD_TYPE_CURRENT_TEMPERATURE = 200,
   FIELD_TYPE_BATTERY_STATUS = 300,
 
-  ARC_TYPE_SECONDS_CIRCLE = 1000,
-  ARC_TYPE_SECONDS_DOT = 1010,
-  ARC_TYPE_DAY = 1020,
-  ARC_TYPE_DISABLED = 1099
+  TIME_CIRCLE_TYPE_SECONDS_CIRCLE = 1000,
+  TIME_CIRCLE_TYPE_SECONDS_DOT = 1010,
+  TIME_CIRCLE_TYPE_DISABLED = 1099
 }
 
 module DataService {
@@ -120,10 +119,27 @@ module DataService {
   }
 
   function getStressScore() {
+    var stressScore = ActivityMonitor.getInfo().stressScore;
+    var iconColor;
+
+    if (stressScore) {
+      iconColor = Settings.get("colorLow");
+      if (stressScore > 25) {
+        iconColor = Settings.get("colorModerate");
+      } else if (stressScore > 50) {
+        iconColor = Settings.get("colorWarning");
+      } else if (stressScore > 75) {
+        iconColor = Settings.get("colorAlert");
+      } 
+    } else {
+      iconColor = Settings.get("colorValue");
+      stressScore = "--";
+    }
+
     return {
       :icon => "stress",
-      :iconColor => Settings.get("colorValue"),
-      :value => ActivityMonitor.getInfo().stressScore
+      :iconColor => iconColor,
+      :value => stressScore
     };
   }
 

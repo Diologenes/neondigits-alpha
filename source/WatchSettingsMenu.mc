@@ -36,7 +36,7 @@ class WatchSettingsMenu extends WatchUi.Menu2 {
 
     Menu2.addItem(createMenuItem("submenuDataBottomLeft", Rez.Strings.DataFieldTypeBottomLeft));
 
-    Menu2.addItem(createMenuItem("submenuArcType", Rez.Strings.ArcType));
+    Menu2.addItem(createMenuItem("submenuTimeCircleType", Rez.Strings.TimeCircleType));
   }
 
 }
@@ -58,8 +58,8 @@ class WatchSettingsDelegate extends WatchUi.Menu2InputDelegate {
     } 
     
     // on arc type menu click
-    if (menuId.equals("submenuArcType")) {
-      arcTypeMenu();
+    if (menuId.equals("submenuTimeCircleType")) {
+      timeCircleTypeMenu();
       return;
     }
 
@@ -87,9 +87,9 @@ class WatchSettingsDelegate extends WatchUi.Menu2InputDelegate {
       return;
     }
 
-        // on arc type selection
-    if (menuId.toString().find("arcType_") != null) {
-      Settings.set("arcType", getValueFromString(menuId.toString()).toNumber());
+        // on time circle type selection
+    if (menuId.toString().find("timeCircleType_") != null) {
+      Settings.set("timeCircleType", getValueFromString(menuId.toString()).toNumber());
       WatchUi.showToast(WatchUi.loadResource(Rez.Strings.Saved), null);
       onBack();
       return;
@@ -128,9 +128,9 @@ class WatchSettingsDelegate extends WatchUi.Menu2InputDelegate {
     }
   }
 
-  private function arcTypeMenu() {
-    var menu = new WatchUi.Menu2({ :title => WatchUi.loadResource(Rez.Strings.ArcType) });
-    getSelectableArcTypes(menu, "arcType");
+  private function timeCircleTypeMenu() {
+    var menu = new WatchUi.Menu2({ :title => WatchUi.loadResource(Rez.Strings.TimeCircleType) });
+    getSelectableTimeCircleTypes(menu, "timeCircleType");
     WatchUi.pushView(menu, new WatchSettingsDelegate(), WatchUi.SLIDE_LEFT);
   } 
 
@@ -187,13 +187,13 @@ function getSelectableDataSets(menu, position as String) {
   menu.addItem(createMenuItem(position + "_" + FIELD_TYPE_ACTIVE_MINUTES_DAY, Rez.Strings.DataFieldValueActiveMinutesDay));
   menu.addItem(createMenuItem(position + "_" + FIELD_TYPE_CURRENT_TEMPERATURE, Rez.Strings.DataFieldValueCurrentTemperature));
   menu.addItem(createMenuItem(position + "_" + FIELD_TYPE_TIME_TO_RECOVERY, Rez.Strings.DataFieldValueTimeToRecovery));
+  menu.addItem(createMenuItem(position + "_" + FIELD_TYPE_STRESS_SCORE, Rez.Strings.DataFieldValueStressScore));
 }
 
-function getSelectableArcTypes(menu, position as String) {
-  menu.addItem(createMenuItem(position + "_" + ARC_TYPE_SECONDS_CIRCLE, Rez.Strings.ArcTypeSecondsCircle));
-  menu.addItem(createMenuItem(position + "_" + ARC_TYPE_SECONDS_DOT, Rez.Strings.ArcTypeSecondsDot));
-  menu.addItem(createMenuItem(position + "_" + ARC_TYPE_DAY, Rez.Strings.ArcTypeDay));
-  menu.addItem(createMenuItem(position + "_" + ARC_TYPE_DISABLED, Rez.Strings.ArcTypeDisabled));
+function getSelectableTimeCircleTypes(menu, position as String) {
+  menu.addItem(createMenuItem(position + "_" + TIME_CIRCLE_TYPE_SECONDS_CIRCLE, Rez.Strings.TimeCircleTypeSecondsCircle));
+  menu.addItem(createMenuItem(position + "_" + TIME_CIRCLE_TYPE_SECONDS_DOT, Rez.Strings.TimeCircleTypeSecondsDot));
+  menu.addItem(createMenuItem(position + "_" + TIME_CIRCLE_TYPE_DISABLED, Rez.Strings.TimeCircleTypeDisabled));
 }
 
 function getValueFromString(stringValue as String) {

@@ -31,11 +31,10 @@
     <string id="DataFieldValueStressScore">Stress Score</string>
     <string id="DataFieldValueTimeToRecovery">Time to recovery (h)</string>
 
-    <string id="ArcType">Arc-Type</string>
-    <string id="ArcTypeSecondsCircle">Seconds-Cycle: Full Circle</string>
-    <string id="ArcTypeSecondsDot">Seconds-Cycle: Dot</string>
-    <string id="ArcTypeDay">Day-Cycle</string>
-    <string id="ArcTypeDisabled">Disabled</string>
+    <string id="TimeCircleType">TimeCircle-Type</string>
+    <string id="TimeCircleTypeSecondsCircle">Seconds-Cycle: Full Circle</string>
+    <string id="TimeCircleTypeSecondsDot">Seconds-Cycle: Dot</string>
+    <string id="TimeCircleTypeDisabled">Disabled</string>
 
     <string id="SettingsMenu">Einstellungen</string>
     <string id="ToggleEnable">Enabled</string>

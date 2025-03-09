@@ -12,6 +12,6 @@
     <drawable id="DataTopLeft" class="DataTopLeftComponent"></drawable>
     <drawable id="DataTopRight" class="DataTopRightComponent"></drawable>
     <drawable id="DataBottom" class="DataBottomComponent"></drawable>
-    <drawable id="Arc" class="ArcComponent"></drawable>
+    <drawable id="TimeCircle" class="TimeCircleComponent"></drawable>
 
 </layout>

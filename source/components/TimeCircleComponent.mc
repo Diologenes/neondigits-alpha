@@ -5,7 +5,7 @@ import Toybox.WatchUi;
 import Toybox.ActivityMonitor;
 
 
-class ArcComponent extends WatchUi.Drawable {
+class TimeCircleComponent extends WatchUi.Drawable {
   var centerX;
   var centerY;
   var colorGrayDark;
@@ -21,19 +21,18 @@ class ArcComponent extends WatchUi.Drawable {
     centerY = Settings.get("centerY");
     colorGrayDark = Settings.get("colorGrayDark");
     colorTransparent = Settings.get("colorTransparent");
-    radius = Settings.get("width") / 2.0 - 8;
+    radius = Settings.get("width") / 2.0 - 3;
   }
 
   function draw(dc as Dc) {
-    var arcType = Settings.get("arcType");
-    if (Settings.get("highPowerMode") && arcType != ARC_TYPE_DISABLED) {
+    var timeCircleType = Settings.get("timeCircleType");
+    if (Settings.get("highPowerMode") && timeCircleType != TIME_CIRCLE_TYPE_DISABLED) {
       colorTheme = Settings.get("colorTheme");
       clockTime = System.getClockTime();
 
-      switch(arcType) {
-        case ARC_TYPE_SECONDS_CIRCLE: drawSecondsCircle(dc); break;
-        case ARC_TYPE_SECONDS_DOT: drawSecondsDot(dc); break;
-        case ARC_TYPE_DAY: drawDayCycle(dc); break;
+      switch(timeCircleType) {
+        case TIME_CIRCLE_TYPE_SECONDS_CIRCLE: drawSecondsCircle(dc); break;
+        case TIME_CIRCLE_TYPE_SECONDS_DOT: drawSecondsDot(dc); break;
       }
     }
   }
@@ -56,18 +55,6 @@ class ArcComponent extends WatchUi.Drawable {
     dc.setPenWidth(1);
   }
 
-  private function drawDayCycle(dc) {
-    var response = getDegreeValuesForDay() as Dictionary<Symbol, Number>;
-    var arcRadius = radius - 4;
-    dc.setPenWidth(3);
-    dc.setColor(colorTheme, colorTransparent);
-    dc.drawArc(centerX, centerY, arcRadius, Graphics.ARC_CLOCKWISE, response[:startDegree], response[:activeDegree]);
-
-    dc.setColor(colorGrayDark, colorTransparent);
-    dc.drawArc(centerX, centerY, arcRadius, Graphics.ARC_CLOCKWISE, response[:activeDegree], response[:endDegree]);
-    dc.setPenWidth(1);
-  }
-
   private function getDegreeValuesForSeconds() {
     var percentage = clockTime.sec / 60.0 * 100;
     var startDegree = 90;
@@ -76,26 +63,6 @@ class ArcComponent extends WatchUi.Drawable {
     return {
       :startDegree => startDegree,
       :endDegree => startDegree - diff
-    };
-  }
-
-  private function getDegreeValuesForDay() {
-    var hourToMin = (clockTime.hour * 60) + clockTime.min;
-    var minutesOfDayPercent = ((hourToMin * 0.000694444) * 100).toNumber(); // 0.000694444 = 1 / 1440 (max minutes a day)
-
-    var startDegree = 135;
-    var endDegree = 45;
-    var spanDegree = startDegree - endDegree; 
-    var diff = ((minutesOfDayPercent * 0.01) * spanDegree).toNumber();
-    var activeDegree = startDegree - diff;
-    if (diff == 0) {
-      activeDegree = startDegree - 1;
-    }
-
-    return {
-      :startDegree => startDegree,
-      :endDegree => endDegree,
-      :activeDegree => activeDegree
     };
   }
 }
