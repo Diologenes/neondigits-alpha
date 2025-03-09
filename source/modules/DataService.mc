@@ -121,7 +121,7 @@ module DataService {
 
   function getStressScore() {
     return {
-      :icon => "steps",
+      :icon => "stress",
       :iconColor => Settings.get("colorValue"),
       :value => ActivityMonitor.getInfo().stressScore
     };
@@ -137,7 +137,7 @@ module DataService {
     }
 
     return {
-      :icon => "notification",
+      :icon => "recovery",
       :iconColor => Settings.get("colorValue"),
       :value => value
     };

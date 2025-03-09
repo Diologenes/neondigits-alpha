@@ -11,22 +11,28 @@ module Icons {
 
     var iconChar = null;
     switch(identifier) {
-      case "calories": iconChar = "h"; break;
-      case "cardio": iconChar = "b"; break;
-      case "distance": iconChar = "i"; break;
-      case "steps": iconChar = "p"; break;
-      case "battery_1": iconChar = "i"; break;
-      case "battery_2": iconChar = "j"; break;
-      case "battery_3": iconChar = "k"; break;
-      case "battery_4": iconChar = "l"; break;
-      case "battery_5": iconChar = "m"; break;
-      case "battery_6": iconChar = "n"; break;
-      case "weather": iconChar = "d"; break;
-      case "altitude": iconChar = "f"; break;
-      case "vo": iconChar = "a";
-      case "notification": iconChar = "d"; break;
-      case "calendar": iconChar = "c"; break;
-      case "clock": iconChar = "o"; break;
+      case "calories": iconChar = (61269).toChar(); break;
+      case "cardio": iconChar = (57659).toChar(); break;
+      case "distance": iconChar = (59928).toChar(); break;
+      case "steps": iconChar = (63601).toChar(); break;
+      case "battery_1": iconChar = (61596).toChar(); break;
+      case "battery_2": iconChar = (61597).toChar(); break;
+      case "battery_3": iconChar = (61598).toChar(); break;
+      case "battery_4": iconChar = (61599).toChar(); break;
+      case "battery_5": iconChar = (61600).toChar(); break;
+      case "battery_6": iconChar = (61601).toChar(); break;
+      case "vo2": iconChar = (57636).toChar(); break;
+      case "notification": iconChar = (59380).toChar(); break;
+      case "calendar": iconChar = (58902).toChar(); break;
+      case "elevate": iconChar = (59621).toChar(); break;
+      case "clock": iconChar = (59480).toChar(); break;
+      case "passedTime": iconChar = (59996).toChar(); break;
+      case "stress": iconChar = (60024).toChar(); break;
+      case "shield": iconChar = (62471).toChar(); break;
+      case "stairs": iconChar = (62572).toChar(); break;
+      case "time": iconChar = (63270).toChar(); break;
+      case "recovery": iconChar = (62657).toChar(); break;
+
     }
     
     dc.setColor(color, Settings.get("colorTransparent"));

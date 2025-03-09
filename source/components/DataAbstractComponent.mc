@@ -66,7 +66,7 @@ class DataAbstractComponent extends WatchUi.Drawable {
   }
 
   private function getTextOffsetOnIcon(xOffset as Number) as Number {
-      var textPadding = 20; 
+      var textPadding = 25; 
       if (xOffset >= 0) {
         textPadding = xOffset + textPadding;
       } else {
