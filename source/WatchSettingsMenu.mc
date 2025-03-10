@@ -50,14 +50,18 @@ class WatchSettingsDelegate extends WatchUi.Menu2InputDelegate {
   function onSelect(menuItem) {
     var menuId = menuItem.getId();
 
+    if (menuId == null) {
+      return;
+    }
+
     // on toggles
     if (menuItem instanceof WatchUi.ToggleMenuItem) {
         var value = menuItem.isEnabled() as Boolean;
-        Settings.set(menuId, value);
+        Settings.set(menuId.toString(), value);
         return;
     } 
     
-    // on arc type menu click
+    // on time circle type menu click
     if (menuId.equals("submenuTimeCircleType")) {
       timeCircleTypeMenu();
       return;
@@ -89,40 +93,40 @@ class WatchSettingsDelegate extends WatchUi.Menu2InputDelegate {
 
         // on time circle type selection
     if (menuId.toString().find("timeCircleType_") != null) {
-      Settings.set("timeCircleType", getValueFromString(menuId.toString()).toNumber());
-      WatchUi.showToast(WatchUi.loadResource(Rez.Strings.Saved), null);
+      Settings.set("timeCircleType", getValueFromString(menuId.toString()).toNumber() as Number);
+      WatchUi.showToast(WatchUi.loadResource(Rez.Strings.Saved) as String, null);
       onBack();
       return;
     }
 
     // on color theme selection
     if (menuId.toString().find("colorTheme_") != null) {
-      Settings.set("colorTheme", Settings.get(menuId.toString()));
-      WatchUi.showToast(WatchUi.loadResource(Rez.Strings.Saved), null);
+      Settings.set("colorTheme", Settings.getString(menuId.toString()));
+      WatchUi.showToast(WatchUi.loadResource(Rez.Strings.Saved) as String, null);
       onBack();
       return;
     }
 
     // on data top left selection
     if (menuId.toString().find("dataFieldTypeTopLeft_") != null) {
-      Settings.set("dataFieldTypeTopLeft", getValueFromString(menuId.toString()).toNumber());
-      WatchUi.showToast(WatchUi.loadResource(Rez.Strings.Saved), null);
+      Settings.set("dataFieldTypeTopLeft", getValueFromString(menuId.toString()).toNumber() as Number);
+      WatchUi.showToast(WatchUi.loadResource(Rez.Strings.Saved) as String, null);
       onBack();
       return;
     }
 
     // on data top right selection
     if (menuId.toString().find("dataFieldTypeTopRight_") != null) {
-      Settings.set("dataFieldTypeTopRight", getValueFromString(menuId.toString()).toNumber());
-      WatchUi.showToast(WatchUi.loadResource(Rez.Strings.Saved), null);
+      Settings.set("dataFieldTypeTopRight", getValueFromString(menuId.toString()).toNumber() as Number);
+      WatchUi.showToast(WatchUi.loadResource(Rez.Strings.Saved) as String, null);
       onBack();
       return;
     }
 
     // on data bottom left selection
     if (menuId.toString().find("dataFieldTypeBottomLeft_") != null) {
-      Settings.set("dataFieldTypeBottomLeft", getValueFromString(menuId.toString()).toNumber());
-      WatchUi.showToast(WatchUi.loadResource(Rez.Strings.Saved), null);
+      Settings.set("dataFieldTypeBottomLeft", getValueFromString(menuId.toString()).toNumber() as Number);
+      WatchUi.showToast(WatchUi.loadResource(Rez.Strings.Saved) as String, null);
       onBack();
       return;
     }
@@ -172,15 +176,15 @@ class WatchSettingsDelegate extends WatchUi.Menu2InputDelegate {
   }
 }
 
-function createMenuItem(value, stringResource) {
+function createMenuItem(value, stringResource) as WatchUi.MenuItem {
   return new WatchUi.MenuItem(WatchUi.loadResource(stringResource), null, value, null);
 }
 
-function toggleItem(id, label, enabledLabel, disabledLabel) {
-  return new WatchUi.ToggleMenuItem(label, { :enabled => enabledLabel, :disabled => disabledLabel }, id, Settings.get(id) as Boolean, null);
+function toggleItem(id, label, enabledLabel, disabledLabel) as WatchUi.ToggleMenuItem {
+  return new WatchUi.ToggleMenuItem(label, { :enabled => enabledLabel, :disabled => disabledLabel }, id, Settings.getBoolean(id) as Boolean, null);
 }
 
-function getSelectableDataSets(menu, position as String) {
+function getSelectableDataSets(menu, position as String) as Void {
   menu.addItem(createMenuItem(position + "_" + FIELD_TYPE_CALORIES, Rez.Strings.DataFieldValueCalories));
   menu.addItem(createMenuItem(position + "_" + FIELD_TYPE_STEPS, Rez.Strings.DataFieldValueSteps));
   menu.addItem(createMenuItem(position + "_" + FIELD_TYPE_DISTANCE, Rez.Strings.DataFieldValueDistance));
@@ -190,13 +194,13 @@ function getSelectableDataSets(menu, position as String) {
   menu.addItem(createMenuItem(position + "_" + FIELD_TYPE_STRESS_SCORE, Rez.Strings.DataFieldValueStressScore));
 }
 
-function getSelectableTimeCircleTypes(menu, position as String) {
+function getSelectableTimeCircleTypes(menu, position as String) as Void {
   menu.addItem(createMenuItem(position + "_" + TIME_CIRCLE_TYPE_SECONDS_CIRCLE, Rez.Strings.TimeCircleTypeSecondsCircle));
   menu.addItem(createMenuItem(position + "_" + TIME_CIRCLE_TYPE_SECONDS_DOT, Rez.Strings.TimeCircleTypeSecondsDot));
   menu.addItem(createMenuItem(position + "_" + TIME_CIRCLE_TYPE_DISABLED, Rez.Strings.TimeCircleTypeDisabled));
 }
 
-function getValueFromString(stringValue as String) {
+function getValueFromString(stringValue as String) as String {
   var startPos = stringValue.find("_") + 1;
   var length = stringValue.length();
   return stringValue.substring(startPos, length);

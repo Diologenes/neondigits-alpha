@@ -29,7 +29,7 @@ enum {
 
 module DataService {
 
-  function getDataByFieldType(fieldType) as DataFieldResponse or Null {
+  function getDataByFieldType(fieldType as String) as DataFieldResponse or Null {
     switch(fieldType) {
       case FIELD_TYPE_CALORIES: 
         return getCalories();          
