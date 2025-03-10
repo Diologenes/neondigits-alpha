@@ -6,46 +6,46 @@ import Toybox.ActivityMonitor;
 
 
 class DataBottomComponent extends WatchUi.Drawable {
-  private var _centerX;
-  private var _centerY;
-  private var _yOffsetLine2;
-  private var _height;
-  private var _colorTransparent;
-  private var _colorValue;
-  private var _font;
-  private var _updateInterval;
+  private var _centerX as Number;
+  private var _centerY as Number;
+  private var _yOffsetLine2 as Number;
+  private var _height as Number;
+  private var _colorTransparent as Graphics.ColorValue;
+  private var _colorValue as Graphics.ColorValue;
+  private var _font as Graphics.FontType;
+  private var _updateInterval as Number;
 
-  private var lastDataUpdate  = -1;
+  private var lastDataUpdate as Number  = -1;
   private var dataSet as DataFieldResponse or Null = null;
 
-  function initialize(params) { 
+  function initialize(params as Dictionary) { 
     Drawable.initialize(params); 
-    _centerX = Settings.get("centerX");
-    _centerY = Settings.get("centerY");
-    _yOffsetLine2 = Settings.get("yOffsetLine2");
-    _height = Settings.get("height");
-    _colorTransparent = Settings.get("colorTransparent");
-    _colorValue = Settings.get("colorValue");
-    _font = Settings.get("fontText");
-    _updateInterval = Settings.get("updateInterval");
+    _centerX = Settings.getNumber("centerX");
+    _centerY = Settings.getNumber("centerY");
+    _yOffsetLine2 = Settings.getNumber("yOffsetLine2");
+    _height = Settings.getNumber("height");
+    _colorTransparent = Settings.getColor("colorTransparent");
+    _colorValue = Settings.getColor("colorValue");
+    _font = Settings.getFont("fontText");
+    _updateInterval = Settings.getNumber("updateInterval");
   }
 
   function draw(dc as Dc) {
-    if (Settings.get("highPowerMode")) {
+    if (Settings.getBoolean("highPowerMode")) {
       updateData();
       drawContent(dc);
     }
   }
 
-  private function updateData() {
+  private function updateData() as Void {
     var currentSecond = System.getClockTime().sec;
     if (lastDataUpdate == -1 || (currentSecond % _updateInterval == 0 && currentSecond != lastDataUpdate)) {
-      dataSet = DataService.getDataByFieldType(Settings.get("dataFieldTypeBottom"));
+      dataSet = DataService.getDataByFieldType(Settings.getString("dataFieldTypeBottom")); 
       lastDataUpdate  = currentSecond;
     }
   }  
 
-  private function drawContent(dc) {
+  private function drawContent(dc as Dc) as Void {
     if (dataSet == null) { 
       return;
     }

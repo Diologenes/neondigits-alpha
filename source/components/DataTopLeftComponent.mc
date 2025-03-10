@@ -1,8 +1,9 @@
 import Toybox.Graphics;
+import Toybox.Lang;
 
 class DataTopLeftComponent extends DataAbstractComponent {
 
-  function initialize(params) { 
+  function initialize(params as Dictionary) { 
     DataAbstractComponent.initialize(params);
   }
 

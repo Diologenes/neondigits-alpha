@@ -4,32 +4,32 @@ import Toybox.Time.Gregorian;
 import Toybox.WatchUi;
 
 class DateComponent extends WatchUi.Drawable {
-  private var _centerX;
-  private var _centerY;
-  private var _height;
-  private var _yOffsetLine2;
-  private var _colorValue;
-  private var _colorTransparent;
-  private var _font;
+  private var _centerX as Number;
+  private var _centerY as Number;
+  private var _height as Number;
+  private var _yOffsetLine2 as Number;
+  private var _colorValue as Graphics.ColorValue;
+  private var _colorTransparent as Graphics.ColorValue;
+  private var _font as Graphics.FontType;
 
-  function initialize(params) {
+  function initialize(params as Dictionary) {
     Drawable.initialize(params);
-    _centerX = Settings.get("centerX");
-    _centerY = Settings.get("centerY");
-    _height = Settings.get("height");
-    _yOffsetLine2 = Settings.get("yOffsetLine2");
-    _colorValue = Settings.get("colorValue");
-    _colorTransparent = Settings.get("colorTransparent");    
-    _font = Settings.get("fontText");
+    _centerX = Settings.getNumber("centerX");
+    _centerY = Settings.getNumber("centerY");
+    _height = Settings.getNumber("height");
+    _yOffsetLine2 = Settings.getNumber("yOffsetLine2");
+    _colorValue = Settings.getColor("colorValue");
+    _colorTransparent = Settings.getColor("colorTransparent");    
+    _font = Settings.getFont("fontText");
   }
 
   function draw(dc) {  
-    if (Settings.get("highPowerMode")) {
+    if (Settings.getBoolean("highPowerMode")) {
       drawContent(dc);
     }
   }
 
-  private function drawContent(dc) {
+  private function drawContent(dc as Dc) as Void {
     dc.setColor(_colorValue, _colorTransparent);
 
     var yOffset = ((_height - (_centerY + _yOffsetLine2)) / 2) + 5;
@@ -43,7 +43,7 @@ class DateComponent extends WatchUi.Drawable {
     );
   }
 
-  private function getDate() {
+  private function getDate() as String {
     var today = Gregorian.info(Time.now(), Time.FORMAT_MEDIUM);
     return Lang.format(
         "$1$ $2$",

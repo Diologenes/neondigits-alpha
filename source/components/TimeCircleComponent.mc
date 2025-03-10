@@ -6,25 +6,26 @@ import Toybox.ActivityMonitor;
 
 
 class TimeCircleComponent extends WatchUi.Drawable {
-  private var _centerX;
-  private var _centerY;
-  private var _colorTransparent;
-  private var _colorTheme;
-  private var _radius;
-  private var _clockTime;
+  private var _centerX as Number;
+  private var _centerY as Number;
+  private var _colorTransparent as Graphics.ColorValue;
+  private var _colorTheme as Graphics.ColorValue;
+  private var _radius as Float;
+  private var _clockTime as System.ClockTime?;
 
   function initialize(params) { 
     Drawable.initialize(params); 
-    _centerX = Settings.get("centerX");
-    _centerY = Settings.get("centerY");
-    _colorTransparent = Settings.get("colorTransparent");
-    _radius = Settings.get("width") / 2.0 - 3;
+    _centerX = Settings.getNumber("centerX");
+    _centerY = Settings.getNumber("centerY");
+    _colorTransparent = Settings.getColor("colorTransparent");
+    _colorTheme = Settings.getColor("colorTheme");
+    _radius = Settings.getNumber("width") / 2.0 - 3;
   }
 
   function draw(dc as Dc) {
-    var timeCircleType = Settings.get("timeCircleType");
-    if (Settings.get("highPowerMode") && timeCircleType != TIME_CIRCLE_TYPE_DISABLED) {
-      _colorTheme = Settings.get("colorTheme");
+    var timeCircleType = Settings.getString("timeCircleType");
+    if (Settings.getBoolean("highPowerMode") && timeCircleType != TIME_CIRCLE_TYPE_DISABLED) {
+      _colorTheme = Settings.getColor("colorTheme");
       _clockTime = System.getClockTime();
 
       switch(timeCircleType) {
@@ -34,7 +35,7 @@ class TimeCircleComponent extends WatchUi.Drawable {
     }
   }
 
-  private function drawSecondsCircle(dc) {
+  private function drawSecondsCircle(dc as Dc) as Void {
     var response = getDegreeValuesForSeconds() as Dictionary<Symbol, Number>;
 
     dc.setPenWidth(2);
@@ -43,7 +44,7 @@ class TimeCircleComponent extends WatchUi.Drawable {
     dc.setPenWidth(1);
   }
 
-  private function drawSecondsDot(dc) {
+  private function drawSecondsDot(dc as Dc) as Void {
     var response = getDegreeValuesForSeconds() as Dictionary<Symbol, Number>;
 
     dc.setPenWidth(6);
@@ -52,8 +53,8 @@ class TimeCircleComponent extends WatchUi.Drawable {
     dc.setPenWidth(1);
   }
 
-  private function getDegreeValuesForSeconds() {
-    var percentage = _clockTime.sec / 60.0 * 100;
+  private function getDegreeValuesForSeconds() as Dictionary<Symbol, Number> {
+    var percentage = _clockTime != null ? _clockTime.sec / 60.0 * 100 : 0;
     var startDegree = 90;
     var diff = ((percentage * 0.01) * 360).toNumber();
 

@@ -4,7 +4,7 @@ import Toybox.Lang;
 
 module Icons {
 
-  function drawIcon(identifier, dc, x, y, color) {
+  function drawIcon(identifier as String or Null, dc as Dc, x as Number, y as Number, color as Graphics.ColorValue) as Void {
     if (identifier == null) {
         return;
     }
@@ -35,11 +35,11 @@ module Icons {
 
     }
     
-    dc.setColor(color, Settings.get("colorTransparent"));
+    dc.setColor(color, Settings.getColor("colorTransparent"));
     dc.drawText(
       x, 
       y,
-      Application.loadResource(Rez.Fonts.IconFont), 
+      Application.loadResource(Rez.Fonts.IconFont) as Graphics.FontType, 
       iconChar,
       Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER
     );

@@ -8,7 +8,7 @@ import Toybox.Lang;
 class WatchSettingsMenu extends WatchUi.Menu2 {
   function initialize() {
   
-    Menu2.initialize({ :title => WatchUi.loadResource(Rez.Strings.SettingsMenu)});
+    Menu2.initialize({ :title => WatchUi.loadResource(Rez.Strings.SettingsMenu) as String });
 
     Menu2.addItem(
       toggleItem(
@@ -50,14 +50,18 @@ class WatchSettingsDelegate extends WatchUi.Menu2InputDelegate {
   function onSelect(menuItem) {
     var menuId = menuItem.getId();
 
+    if (menuId == null) {
+      return;
+    }
+
     // on toggles
     if (menuItem instanceof WatchUi.ToggleMenuItem) {
         var value = menuItem.isEnabled() as Boolean;
-        Settings.set(menuId, value);
+        Settings.set(menuId.toString(), value);
         return;
     } 
     
-    // on arc type menu click
+    // on time circle type menu click
     if (menuId.equals("submenuTimeCircleType")) {
       timeCircleTypeMenu();
       return;
@@ -89,53 +93,53 @@ class WatchSettingsDelegate extends WatchUi.Menu2InputDelegate {
 
         // on time circle type selection
     if (menuId.toString().find("timeCircleType_") != null) {
-      Settings.set("timeCircleType", getValueFromString(menuId.toString()).toNumber());
-      WatchUi.showToast(WatchUi.loadResource(Rez.Strings.Saved), null);
+      Settings.set("timeCircleType", getValueFromString(menuId.toString()).toNumber() as Number);
+      WatchUi.showToast(WatchUi.loadResource(Rez.Strings.Saved) as String, null);
       onBack();
       return;
     }
 
     // on color theme selection
     if (menuId.toString().find("colorTheme_") != null) {
-      Settings.set("colorTheme", Settings.get(menuId.toString()));
-      WatchUi.showToast(WatchUi.loadResource(Rez.Strings.Saved), null);
+      Settings.set("colorTheme", Settings.getString(menuId.toString()));
+      WatchUi.showToast(WatchUi.loadResource(Rez.Strings.Saved) as String, null);
       onBack();
       return;
     }
 
     // on data top left selection
     if (menuId.toString().find("dataFieldTypeTopLeft_") != null) {
-      Settings.set("dataFieldTypeTopLeft", getValueFromString(menuId.toString()).toNumber());
-      WatchUi.showToast(WatchUi.loadResource(Rez.Strings.Saved), null);
+      Settings.set("dataFieldTypeTopLeft", getValueFromString(menuId.toString()).toNumber() as Number);
+      WatchUi.showToast(WatchUi.loadResource(Rez.Strings.Saved) as String, null);
       onBack();
       return;
     }
 
     // on data top right selection
     if (menuId.toString().find("dataFieldTypeTopRight_") != null) {
-      Settings.set("dataFieldTypeTopRight", getValueFromString(menuId.toString()).toNumber());
-      WatchUi.showToast(WatchUi.loadResource(Rez.Strings.Saved), null);
+      Settings.set("dataFieldTypeTopRight", getValueFromString(menuId.toString()).toNumber() as Number);
+      WatchUi.showToast(WatchUi.loadResource(Rez.Strings.Saved) as String, null);
       onBack();
       return;
     }
 
     // on data bottom left selection
     if (menuId.toString().find("dataFieldTypeBottomLeft_") != null) {
-      Settings.set("dataFieldTypeBottomLeft", getValueFromString(menuId.toString()).toNumber());
-      WatchUi.showToast(WatchUi.loadResource(Rez.Strings.Saved), null);
+      Settings.set("dataFieldTypeBottomLeft", getValueFromString(menuId.toString()).toNumber() as Number);
+      WatchUi.showToast(WatchUi.loadResource(Rez.Strings.Saved) as String, null);
       onBack();
       return;
     }
   }
 
-  private function timeCircleTypeMenu() {
-    var menu = new WatchUi.Menu2({ :title => WatchUi.loadResource(Rez.Strings.TimeCircleType) });
+  private function timeCircleTypeMenu() as Void {
+    var menu = new WatchUi.Menu2({ :title => WatchUi.loadResource(Rez.Strings.TimeCircleType) as String });
     getSelectableTimeCircleTypes(menu, "timeCircleType");
     WatchUi.pushView(menu, new WatchSettingsDelegate(), WatchUi.SLIDE_LEFT);
   } 
 
-  private function colorThemeMenu() {
-    var menu = new WatchUi.Menu2({ :title => WatchUi.loadResource(Rez.Strings.SubmenuColorTheme) });
+  private function colorThemeMenu() as Void {
+    var menu = new WatchUi.Menu2({ :title => WatchUi.loadResource(Rez.Strings.SubmenuColorTheme) as String });
     menu.addItem(createMenuItem("colorTheme_lemon", Rez.Strings.ThemeLemon));
     menu.addItem(createMenuItem("colorTheme_gold", Rez.Strings.ThemeGold));
     menu.addItem(createMenuItem("colorTheme_orange", Rez.Strings.ThemeOrange));
@@ -149,20 +153,20 @@ class WatchSettingsDelegate extends WatchUi.Menu2InputDelegate {
     WatchUi.pushView(menu, new WatchSettingsDelegate(), WatchUi.SLIDE_LEFT);
   } 
 
-  private function dataTopLeftMenu() {
-    var menu = new WatchUi.Menu2({ :title => WatchUi.loadResource(Rez.Strings.DataFieldTypeTopLeft) });
+  private function dataTopLeftMenu() as Void {
+    var menu = new WatchUi.Menu2({ :title => WatchUi.loadResource(Rez.Strings.DataFieldTypeTopLeft) as String });
     getSelectableDataSets(menu, "dataFieldTypeTopLeft");
     WatchUi.pushView(menu, new WatchSettingsDelegate(), WatchUi.SLIDE_LEFT);
   } 
 
-  private function dataTopRightMenu() {
-    var menu = new WatchUi.Menu2({ :title => WatchUi.loadResource(Rez.Strings.DataFieldTypeTopRight) });
+  private function dataTopRightMenu() as Void {
+    var menu = new WatchUi.Menu2({ :title => WatchUi.loadResource(Rez.Strings.DataFieldTypeTopRight) as String });
     getSelectableDataSets(menu, "dataFieldTypeTopRight");
     WatchUi.pushView(menu, new WatchSettingsDelegate(), WatchUi.SLIDE_LEFT);
   } 
 
-  private function dataBottomLeftMenu() {
-    var menu = new WatchUi.Menu2({ :title => WatchUi.loadResource(Rez.Strings.DataFieldTypeBottomLeft) });
+  private function dataBottomLeftMenu() as Void {
+    var menu = new WatchUi.Menu2({ :title => WatchUi.loadResource(Rez.Strings.DataFieldTypeBottomLeft) as String });
     getSelectableDataSets(menu, "dataFieldTypeBottomLeft");
     WatchUi.pushView(menu, new WatchSettingsDelegate(), WatchUi.SLIDE_LEFT);
   } 
@@ -172,15 +176,15 @@ class WatchSettingsDelegate extends WatchUi.Menu2InputDelegate {
   }
 }
 
-function createMenuItem(value, stringResource) {
+function createMenuItem(value as String, stringResource as ResourceId) as WatchUi.MenuItem {
   return new WatchUi.MenuItem(WatchUi.loadResource(stringResource), null, value, null);
 }
 
-function toggleItem(id, label, enabledLabel, disabledLabel) {
-  return new WatchUi.ToggleMenuItem(label, { :enabled => enabledLabel, :disabled => disabledLabel }, id, Settings.get(id) as Boolean, null);
+function toggleItem(id as String, label as String, enabledLabel as String, disabledLabel as String) as WatchUi.ToggleMenuItem {
+  return new WatchUi.ToggleMenuItem(label, { :enabled => enabledLabel, :disabled => disabledLabel }, id, Settings.getBoolean(id) as Boolean, null);
 }
 
-function getSelectableDataSets(menu, position as String) {
+function getSelectableDataSets(menu as WatchUi.Menu2, position as String) as Void {
   menu.addItem(createMenuItem(position + "_" + FIELD_TYPE_CALORIES, Rez.Strings.DataFieldValueCalories));
   menu.addItem(createMenuItem(position + "_" + FIELD_TYPE_STEPS, Rez.Strings.DataFieldValueSteps));
   menu.addItem(createMenuItem(position + "_" + FIELD_TYPE_DISTANCE, Rez.Strings.DataFieldValueDistance));
@@ -190,14 +194,17 @@ function getSelectableDataSets(menu, position as String) {
   menu.addItem(createMenuItem(position + "_" + FIELD_TYPE_STRESS_SCORE, Rez.Strings.DataFieldValueStressScore));
 }
 
-function getSelectableTimeCircleTypes(menu, position as String) {
+function getSelectableTimeCircleTypes(menu as WatchUi.Menu2, position as String) as Void {
   menu.addItem(createMenuItem(position + "_" + TIME_CIRCLE_TYPE_SECONDS_CIRCLE, Rez.Strings.TimeCircleTypeSecondsCircle));
   menu.addItem(createMenuItem(position + "_" + TIME_CIRCLE_TYPE_SECONDS_DOT, Rez.Strings.TimeCircleTypeSecondsDot));
   menu.addItem(createMenuItem(position + "_" + TIME_CIRCLE_TYPE_DISABLED, Rez.Strings.TimeCircleTypeDisabled));
 }
 
-function getValueFromString(stringValue as String) {
-  var startPos = stringValue.find("_") + 1;
-  var length = stringValue.length();
-  return stringValue.substring(startPos, length);
+function getValueFromString(stringValue as String) as String {
+  var strPos = stringValue.find("_");
+  if (strPos != null) {
+    var result = stringValue.substring((strPos + 1), stringValue.length());
+    return result != null ? result : "";
+  }
+  return "";
 }
