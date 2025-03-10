@@ -4,23 +4,23 @@ import Toybox.Time.Gregorian;
 import Toybox.WatchUi;
 
 class DateComponent extends WatchUi.Drawable {
-  var centerX;
-  var centerY;
-  var height;
-  var yOffsetLine2;
-  var colorValue;
-  var colorTransparent;
-  var font;
+  private var _centerX;
+  private var _centerY;
+  private var _height;
+  private var _yOffsetLine2;
+  private var _colorValue;
+  private var _colorTransparent;
+  private var _font;
 
   function initialize(params) {
     Drawable.initialize(params);
-    centerX = Settings.get("centerX");
-    centerY = Settings.get("centerY");
-    height = Settings.get("height");
-    yOffsetLine2 = Settings.get("yOffsetLine2");
-    colorValue = Settings.get("colorValue");
-    colorTransparent = Settings.get("colorTransparent");    
-    font = Settings.get("fontText");
+    _centerX = Settings.get("centerX");
+    _centerY = Settings.get("centerY");
+    _height = Settings.get("height");
+    _yOffsetLine2 = Settings.get("yOffsetLine2");
+    _colorValue = Settings.get("colorValue");
+    _colorTransparent = Settings.get("colorTransparent");    
+    _font = Settings.get("fontText");
   }
 
   function draw(dc) {  
@@ -30,14 +30,14 @@ class DateComponent extends WatchUi.Drawable {
   }
 
   private function drawContent(dc) {
-    dc.setColor(colorValue, colorTransparent);
+    dc.setColor(_colorValue, _colorTransparent);
 
-    var yOffset = ((height - (centerY + yOffsetLine2)) / 2) + 5;
+    var yOffset = ((_height - (_centerY + _yOffsetLine2)) / 2) + 5;
 
     dc.drawText(
-      centerX, 
+      _centerX, 
       yOffset,
-      font, 
+      _font, 
       getDate(),
       Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER
     );

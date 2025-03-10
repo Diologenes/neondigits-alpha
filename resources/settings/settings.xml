@@ -56,7 +56,7 @@
             <listEntry value="1000">@Strings.TimeCircleTypeSecondsCircle</listEntry>
             <listEntry value="1010">@Strings.TimeCircleTypeSecondsDot</listEntry>
             <listEntry value="1099">@Strings.TimeCircleTypeDisabled</listEntry>
-        </settingConfig>
+        </settingConfig> 
     </setting>
 
     <setting propertyKey="@Properties.useSeconds" title="@Strings.UseSeconds">

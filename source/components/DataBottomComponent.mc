@@ -6,28 +6,28 @@ import Toybox.ActivityMonitor;
 
 
 class DataBottomComponent extends WatchUi.Drawable {
-  var centerX;
-  var centerY;
-  var yOffsetLine2;
-  var height;
-  var colorTransparent;
-  var colorValue;
-  var font;
-  var updateInterval;
+  private var _centerX;
+  private var _centerY;
+  private var _yOffsetLine2;
+  private var _height;
+  private var _colorTransparent;
+  private var _colorValue;
+  private var _font;
+  private var _updateInterval;
 
   private var lastDataUpdate  = -1;
   private var dataSet as DataFieldResponse or Null = null;
 
   function initialize(params) { 
     Drawable.initialize(params); 
-    centerX = Settings.get("centerX");
-    centerY = Settings.get("centerY");
-    yOffsetLine2 = Settings.get("yOffsetLine2");
-    height = Settings.get("height");
-    colorTransparent = Settings.get("colorTransparent");
-    colorValue = Settings.get("colorValue");
-    font = Settings.get("fontText");
-    updateInterval = Settings.get("updateInterval");
+    _centerX = Settings.get("centerX");
+    _centerY = Settings.get("centerY");
+    _yOffsetLine2 = Settings.get("yOffsetLine2");
+    _height = Settings.get("height");
+    _colorTransparent = Settings.get("colorTransparent");
+    _colorValue = Settings.get("colorValue");
+    _font = Settings.get("fontText");
+    _updateInterval = Settings.get("updateInterval");
   }
 
   function draw(dc as Dc) {
@@ -39,7 +39,7 @@ class DataBottomComponent extends WatchUi.Drawable {
 
   private function updateData() {
     var currentSecond = System.getClockTime().sec;
-    if (lastDataUpdate == -1 || (currentSecond % updateInterval == 0 && currentSecond != lastDataUpdate)) {
+    if (lastDataUpdate == -1 || (currentSecond % _updateInterval == 0 && currentSecond != lastDataUpdate)) {
       dataSet = DataService.getDataByFieldType(Settings.get("dataFieldTypeBottom"));
       lastDataUpdate  = currentSecond;
     }
@@ -55,16 +55,16 @@ class DataBottomComponent extends WatchUi.Drawable {
       return;
     } 
 
-    var yOffset = height - ((height - (centerY + yOffsetLine2)) / 2);
+    var yOffset = _height - ((_height - (_centerY + _yOffsetLine2)) / 2);
 
-    Icons.drawIcon("cardio", dc, centerX - 22, yOffset, dataSet[:iconColor]);
+    Icons.drawIcon("cardio", dc, _centerX - 22, yOffset, dataSet[:iconColor]);
 
-    dc.setColor(colorValue, colorTransparent);
+    dc.setColor(_colorValue, _colorTransparent);
 
     dc.drawText(
-      centerX, 
+      _centerX, 
       yOffset,
-      font, 
+      _font, 
       value,
       Graphics.TEXT_JUSTIFY_LEFT | Graphics.TEXT_JUSTIFY_VCENTER
     );

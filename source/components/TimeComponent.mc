@@ -4,39 +4,39 @@ import Toybox.System;
 import Toybox.WatchUi;
 
 class TimeComponent extends WatchUi.Drawable {
-  var font;
-  var xOffset = 0;
-  var yOffset = 0;
-  var centerX;
-  var centerY;
-  var lastMinute = -1;
-  var colorDefault;
-  var colorWhite;
-  var colorTransparent;
-  var colorTheme;
+  private var _font;
+  private var _xOffset = 0;
+  private var _yOffset = 0;
+  private var _centerX;
+  private var _centerY;
+  private var _lastMinute = -1;
+  private var _colorDefault;
+  private var _colorWhite;
+  private var _colorTransparent;
+  private var _colorTheme;
 
   function initialize(params) {
     Drawable.initialize(params);
-    centerX = Settings.get("centerX");
-    centerY = Settings.get("centerY");    
-    colorDefault = Settings.get("colorGrayLight");
-    colorWhite = Settings.get("colorWhite");
-    colorTransparent = Settings.get("colorTransparent");
-    font = Settings.get("fontTime");
+    _centerX = Settings.get("centerX");
+    _centerY = Settings.get("centerY");    
+    _colorDefault = Settings.get("colorGrayLight");
+    _colorWhite = Settings.get("colorWhite");
+    _colorTransparent = Settings.get("colorTransparent");
+    _font = Settings.get("fontTime");
   }
 
   function draw(dc as Dc) {
     var clockTime = System.getClockTime();
-    colorTheme = Settings.get("colorTheme");
+    _colorTheme = Settings.get("colorTheme");
 
     if (!Settings.get("highPowerMode")) {
-      if (clockTime.min != lastMinute) {
+      if (clockTime.min != _lastMinute) {
         generateOffset();
-        lastMinute = clockTime.min;
+        _lastMinute = clockTime.min;
       }
     } else {
-      xOffset = 0;
-      yOffset = 0;
+      _xOffset = 0;
+      _yOffset = 0;
     }
 
     drawHours(dc, clockTime);
@@ -55,20 +55,20 @@ class TimeComponent extends WatchUi.Drawable {
     var firstDigit = value.substring(0, 1);
     var secondDigit = value.substring(1, 2);
 
-    var color = Settings.get("highPowerMode") ? colorWhite : colorDefault;
-    dc.setColor(color, colorTransparent);
+    var color = Settings.get("highPowerMode") ? _colorWhite : _colorDefault;
+    dc.setColor(color, _colorTransparent);
 
     dc.drawText(
-      centerX - 80 + xOffset, 
-      centerY + yOffset,
-      self.font,
+      _centerX - 80 + _xOffset, 
+      _centerY + _yOffset,
+      _font,
       firstDigit,
       Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER
     );
     dc.drawText(
-      centerX - 30 + xOffset, 
-      centerY + yOffset,
-      self.font,
+      _centerX - 30 + _xOffset, 
+      _centerY + _yOffset,
+      _font,
       secondDigit,
       Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER
     );
@@ -79,27 +79,27 @@ class TimeComponent extends WatchUi.Drawable {
     var firstDigit = value.substring(0, 1);
     var secondDigit = value.substring(1, 2);
 
-    var color = Settings.get("highPowerMode") ? colorTheme : colorDefault;
-    dc.setColor(color, colorTransparent);
+    var color = Settings.get("highPowerMode") ? _colorTheme : _colorDefault;
+    dc.setColor(color, _colorTransparent);
 
     dc.drawText(
-      centerX + 30 + xOffset, 
-      centerY + yOffset,
-      self.font,
+      _centerX + 30 + _xOffset, 
+      _centerY + _yOffset,
+      _font,
       firstDigit,
       Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER
     );
     dc.drawText(
-      centerX + 80 + xOffset, 
-      centerY + yOffset,
-      self.font,
+      _centerX + 80 + _xOffset, 
+      _centerY + _yOffset,
+      _font,
       secondDigit,
       Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER
     );
   }
 
   private function generateOffset() {
-    self.xOffset = (Math.rand() % 41) - 20;
-    self.yOffset = (Math.rand() % 41) - 20;
+    _xOffset = (Math.rand() % 41) - 20;
+    _yOffset = (Math.rand() % 41) - 20;
   }
 }

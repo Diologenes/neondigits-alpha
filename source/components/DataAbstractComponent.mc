@@ -8,24 +8,25 @@ class DataAbstractComponent extends WatchUi.Drawable {
   var xOffset as Number = 0;
   var yOffset as Number = 0;
   var textAlignment;
-  var textFont;
-  var centerX;
-  var centerY;
-  var colorValue;
-  var colorTransparent;
-  var updateInterval;
+
+  private var _textFont;
+  private var _centerX;
+  private var _centerY;
+  private var _colorValue;
+  private var _colorTransparent;
+  private var _updateInterval;
   
   private var lastDataUpdate  = -1;
   private var dataSet as DataFieldResponse or Null = null;
 
   function initialize(params) { 
     WatchUi.Drawable.initialize(params); 
-    textFont = Settings.get("fontText");
-    centerX = Settings.get("centerX");
-    centerY = Settings.get("centerY");
-    colorValue = Settings.get("colorValue");
-    colorTransparent = Settings.get("colorTransparent");
-    updateInterval = Settings.get("updateInterval");
+    _textFont = Settings.get("fontText");
+    _centerX = Settings.get("centerX");
+    _centerY = Settings.get("centerY");
+    _colorValue = Settings.get("colorValue");
+    _colorTransparent = Settings.get("colorTransparent");
+    _updateInterval = Settings.get("updateInterval");
   }
 
   function draw(dc as Dc) {
@@ -37,7 +38,7 @@ class DataAbstractComponent extends WatchUi.Drawable {
 
   private function updateData() {
     var currentSecond = System.getClockTime().sec;
-    if (lastDataUpdate == -1 || (currentSecond % updateInterval == 0 && currentSecond != lastDataUpdate)) {
+    if (lastDataUpdate == -1 || (currentSecond % _updateInterval == 0 && currentSecond != lastDataUpdate)) {
       dataSet = DataService.getDataByFieldType(Settings.get(dataIdentifier));
       lastDataUpdate  = currentSecond;
     }
@@ -48,18 +49,18 @@ class DataAbstractComponent extends WatchUi.Drawable {
       return;
     }
 
-    var yPos = centerY + yOffset;
+    var yPos = _centerY + yOffset;
     var textOffset = xOffset;
     if (dataSet[:icon]) {
-      Icons.drawIcon(dataSet[:icon], dc, centerX + xOffset, yPos, dataSet[:iconColor]);
+      Icons.drawIcon(dataSet[:icon], dc, _centerX + xOffset, yPos, dataSet[:iconColor]);
       textOffset = getTextOffsetOnIcon(xOffset);
     }
 
-    dc.setColor(colorValue, colorTransparent);
+    dc.setColor(_colorValue, _colorTransparent);
     dc.drawText(
-      centerX + textOffset, 
+      _centerX + textOffset, 
       yPos,
-      textFont, 
+      _textFont, 
       dataSet[:value],
       textAlignment | Graphics.TEXT_JUSTIFY_VCENTER
     );
