@@ -29,7 +29,7 @@ enum {
 
 module DataService {
 
-  function getDataByFieldType(fieldType) as DataFieldResponse or Null {
+  function getDataByFieldType(fieldType as String) as DataFieldResponse or Null {
     switch(fieldType) {
       case FIELD_TYPE_CALORIES: 
         return getCalories();          
@@ -57,7 +57,8 @@ module DataService {
     var heartRate = "";
 
     if (ActivityMonitor has :getHeartRateHistory && Activity has :getActivityInfo) {
-      heartRate = Activity.getActivityInfo().currentHeartRate;
+      var activityInfo =  Activity.getActivityInfo();
+      heartRate = activityInfo != null ? activityInfo.currentHeartRate : null;
       if (heartRate == null) {
         var HRH = ActivityMonitor.getHeartRateHistory(1, true);
         var HRS = HRH.next();
@@ -159,11 +160,14 @@ module DataService {
   }
 
   function getActiveMinutesDay() as DataFieldResponse {
-    var totalMinutes = ActivityMonitor.getInfo().activeMinutesDay.total;
-    var hours = totalMinutes / 60;
-    var remainingMinutes = totalMinutes % 60;
-
-    var value = hours.format("%02d") + ":" + remainingMinutes.format("%02d");
+    var totalMinutes = ActivityMonitor.getInfo().activeMinutesDay;
+    totalMinutes = totalMinutes != null ? totalMinutes.total : null;
+    var value = "--";
+    if (totalMinutes != null) {
+      var hours = totalMinutes / 60;
+      var remainingMinutes = totalMinutes % 60;
+      value = hours.format("%02d") + ":" + remainingMinutes.format("%02d");
+    }
 
     return {
       :icon => "clock",
@@ -212,7 +216,7 @@ module DataService {
     var currentConditions = Weather.getCurrentConditions();
     if (currentConditions != null) {
       var useMetricSystem = Settings.getBoolean("useMetricSystem");
-      value = Lang.format("$1$", [useMetricSystem ?  currentConditions.temperature.toNumber() + " °C" : Utilities.celsiusToFahrenheit(currentConditions.temperature).toNumber() + " °F" ]);
+      value = Lang.format("$1$", [useMetricSystem ?  currentConditions.temperature.toNumber() + " °C" : Utilities.celsiusToFahrenheit(currentConditions.temperature) + " °F" ]);
     }
     return {
      :icon => null,

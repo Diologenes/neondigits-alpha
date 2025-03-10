@@ -40,7 +40,7 @@ class DataBottomComponent extends WatchUi.Drawable {
   private function updateData() as Void {
     var currentSecond = System.getClockTime().sec;
     if (lastDataUpdate == -1 || (currentSecond % _updateInterval == 0 && currentSecond != lastDataUpdate)) {
-      dataSet = DataService.getDataByFieldType(Settings.getString("dataFieldTypeBottom"));
+      dataSet = DataService.getDataByFieldType(Settings.getString("dataFieldTypeBottom")); 
       lastDataUpdate  = currentSecond;
     }
   }  

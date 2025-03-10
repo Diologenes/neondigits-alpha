@@ -39,7 +39,7 @@ module Icons {
     dc.drawText(
       x, 
       y,
-      Application.loadResource(Rez.Fonts.IconFont), 
+      Application.loadResource(Rez.Fonts.IconFont) as Graphics.FontType, 
       iconChar,
       Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER
     );
