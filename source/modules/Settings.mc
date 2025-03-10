@@ -5,9 +5,9 @@ import Toybox.Graphics;
 
 module Settings {
 
-  var settings as Dictionary<String, Object | Null> = {};
+  var settings as Dictionary<String, Object | Null> = {} as Dictionary<String, Object | Null>;
 
-  function initialize() {
+  function initialize() as Void {
     var width = System.getDeviceSettings().screenWidth;
     var height = System.getDeviceSettings().screenHeight;
     var centerX = width / 2;
@@ -65,7 +65,7 @@ module Settings {
     loadProps();
   }
   
-  function loadProps() {
+  function loadProps() as Void {
     settings["useMetricSystem"] = System.getDeviceSettings().distanceUnits == System.UNIT_METRIC;
     settings["colorTheme"] = Application.Properties.getValue("colorTheme") as Number;
     settings["useSeconds"] = Application.Properties.getValue("useSeconds") as Boolean;
@@ -76,16 +76,32 @@ module Settings {
     settings["timeCircleType"] = Application.Properties.getValue("timeCircleType") as Number;
   }
 
-  function get(key as String) {
-    return settings[key];
+  function getString(key as String) as String {
+    return settings[key] as String;
   }
 
-  function set(key, value) {
-    Application.Properties.setValue(key, value);
+  function getNumber(key as String) as Number {
+    return settings[key] as Number;
+  }
+
+  function getBoolean(key as String) as Boolean {
+    return settings[key] as Boolean;
+  }
+
+  function getColor(key as String) as Graphics.ColorValue {
+    return settings[key] as Graphics.ColorValue;
+  }
+
+  function getFont(key as String) as Graphics.FontType {
+    return settings[key] as Graphics.FontType;
+  }
+
+  function set(key as String, value as Number or String or Boolean) as Void {
+    Application.Properties.setValue(key as String, value as Number or String or Boolean);
     settings[key] = value;
   }
 
-  function setHighPowerMode(value as Boolean) {
+  function setHighPowerMode(value as Boolean) as Void {
     settings["highPowerMode"] = value;
   }
 }

@@ -1,8 +1,9 @@
 import Toybox.Graphics;
+import Toybox.Lang;
 
 class DataBottomLeftComponent extends DataAbstractComponent {
 
-  function initialize(params) { 
+  function initialize(params as Dictionary) { 
     DataAbstractComponent.initialize(params);
   }
 
@@ -14,8 +15,8 @@ class DataBottomLeftComponent extends DataAbstractComponent {
     DataAbstractComponent.draw(dc);
   }
 
-  private function getXOffset() {
-    return Settings.get("useSeconds") ? -65 : -25;
+  private function getXOffset() as Number {
+    return Settings.getBoolean("useSeconds") ? -65 : -25;
   }
 
 }

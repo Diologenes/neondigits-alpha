@@ -5,39 +5,39 @@ import Toybox.WatchUi;
 
 class SecondsComponent extends WatchUi.Drawable {
   private var _yOffset as Number = 85;
-  private var _squareSize = 80; 
-  private var _halfSquareSize = _squareSize / 2;
-  private var _centerX;
-  private var _centerY;
-  private var _x;
-  private var _y;
-  private var _colorBlack;
-  private var _colorGrayDark;
-  private var _colorTransparent;
-  private var _colorValue;
-  private var _font;
+  private var _squareSize as Number = 80; 
+  private var _halfSquareSize as Number = _squareSize / 2;
+  private var _centerX as Number;
+  private var _centerY as Number;
+  private var _x as Number;
+  private var _y as Number;
+  private var _colorBlack as Graphics.ColorValue;
+  private var _colorGrayDark as Graphics.ColorValue;
+  private var _colorTransparent as Graphics.ColorValue;
+  private var _colorValue as Graphics.ColorValue;
+  private var _font as Graphics.FontType;
 
-  function initialize(params) {
+  function initialize(params as Dictionary) {
     Drawable.initialize(params);
-    _centerX = Settings.get("centerX");
-    _centerY = Settings.get("centerY");
-    _x = Settings.get("centerX") - _halfSquareSize;
-    _y = Settings.get("centerY") - _halfSquareSize + _yOffset;  
-    _colorBlack = Settings.get("colorBlack");
-    _colorGrayDark = Settings.get("colorGrayDark");
-    _colorTransparent = Settings.get("colorTransparent");
-    _colorValue = Settings.get("colorValue");
-    _font = Settings.get("fontSeconds");
+    _centerX = Settings.getNumber("centerX");
+    _centerY = Settings.getNumber("centerY");
+    _x = Settings.getNumber("centerX") - _halfSquareSize;
+    _y = Settings.getNumber("centerY") - _halfSquareSize + _yOffset;  
+    _colorBlack = Settings.getColor("colorBlack");
+    _colorGrayDark = Settings.getColor("colorGrayDark");
+    _colorTransparent = Settings.getColor("colorTransparent");
+    _colorValue = Settings.getColor("colorValue");
+    _font = Settings.getFont("fontSeconds");
   }
 
   function draw(dc as Dc) {
-    if (Settings.get("useSeconds") && Settings.get("highPowerMode")) {
+    if (Settings.getBoolean("useSeconds") && Settings.getBoolean("highPowerMode")) {
       drawBackground(dc); 
       drawSeconds(dc);
     }
   }
 
-  private function drawBackground(dc) {
+  private function drawBackground(dc as Dc) as Void {
     dc.setColor(_colorBlack, _colorBlack);
     dc.fillRectangle(_x, _y, _squareSize, _squareSize);
     
@@ -47,7 +47,7 @@ class SecondsComponent extends WatchUi.Drawable {
     dc.clear();
   }
 
-  private function drawSeconds(dc) {
+  private function drawSeconds(dc as Dc) as Void {
     var clockTime = System.getClockTime();
 
     dc.setColor(_colorValue, _colorTransparent);

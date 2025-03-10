@@ -7,44 +7,44 @@ class DataAbstractComponent extends WatchUi.Drawable {
   var dataIdentifier as String = "";
   var xOffset as Number = 0;
   var yOffset as Number = 0;
-  var textAlignment;
+  var textAlignment as Graphics.TextJustification?;
 
-  private var _textFont;
-  private var _centerX;
-  private var _centerY;
-  private var _colorValue;
-  private var _colorTransparent;
-  private var _updateInterval;
+  private var _textFont as Graphics.FontType;
+  private var _colorTransparent as Graphics.ColorValue;
+  private var _centerX as Number;
+  private var _centerY as Number;
+  private var _colorValue as Number;
+  private var _updateInterval as Number;
   
-  private var lastDataUpdate  = -1;
+  private var lastDataUpdate as Number = -1;
   private var dataSet as DataFieldResponse or Null = null;
 
-  function initialize(params) { 
+  function initialize(params as Dictionary) { 
     WatchUi.Drawable.initialize(params); 
-    _textFont = Settings.get("fontText");
-    _centerX = Settings.get("centerX");
-    _centerY = Settings.get("centerY");
-    _colorValue = Settings.get("colorValue");
-    _colorTransparent = Settings.get("colorTransparent");
-    _updateInterval = Settings.get("updateInterval");
+    _textFont = Settings.getFont("fontText");
+    _centerX = Settings.getNumber("centerX");
+    _centerY = Settings.getNumber("centerY");
+    _colorValue = Settings.getColor("colorValue");
+    _updateInterval = Settings.getNumber("updateInterval");
+    _colorTransparent = Settings.getColor("colorTransparent");
   }
 
   function draw(dc as Dc) {
-    if (Settings.get("highPowerMode")) {
+    if (Settings.getBoolean("highPowerMode")) {
       updateData();
       drawContent(dc);
     }
   }
 
-  private function updateData() {
+  private function updateData() as Void {
     var currentSecond = System.getClockTime().sec;
     if (lastDataUpdate == -1 || (currentSecond % _updateInterval == 0 && currentSecond != lastDataUpdate)) {
-      dataSet = DataService.getDataByFieldType(Settings.get(dataIdentifier));
+      dataSet = DataService.getDataByFieldType(Settings.getString(dataIdentifier));
       lastDataUpdate  = currentSecond;
     }
   }  
 
-  private function drawContent(dc) {
+  private function drawContent(dc as Dc) as Void {
     if (dataSet == null) { 
       return;
     }

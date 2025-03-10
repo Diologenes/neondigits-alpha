@@ -3,11 +3,12 @@ import Toybox.Weather;
 import Toybox.Activity;
 import Toybox.System;
 import Toybox.ActivityMonitor;
+import Toybox.Graphics;
 
 typedef DataFieldResponse as {
-  :icon as String,
-  :iconColor as String,
-  :value as String or Null
+  :icon as String or Null,
+  :iconColor as Graphics.ColorValue,
+  :value as String
 }; 
 
 enum {
@@ -53,9 +54,9 @@ module DataService {
   }
 
   function getHeatRate() as DataFieldResponse {
-    var heartRate = null;
+    var heartRate = "";
 
-    if (ActivityMonitor has :getHeartRateHistory) {
+    if (ActivityMonitor has :getHeartRateHistory && Activity has :getActivityInfo) {
       heartRate = Activity.getActivityInfo().currentHeartRate;
       if (heartRate == null) {
         var HRH = ActivityMonitor.getHeartRateHistory(1, true);
@@ -76,21 +77,22 @@ module DataService {
 
     return {
       :icon => "cario",
-      :iconColor => Settings.get("colorValue"),
+      :iconColor => Settings.getColor("colorValue"),
       :value => heartRate
     };
   }
 
-  function getCalories() {
+  function getCalories() as DataFieldResponse {
+    var value = ActivityMonitor.getInfo().calories;
     return {
       :icon => "calories",
-      :iconColor => Settings.get("colorValue"),
-      :value => ActivityMonitor.getInfo().calories
+      :iconColor => Settings.getColor("colorValue"),
+      :value => value != null ? value.toString() : "--"
     };
   }
 
-  function getDistance() {
-    var useMetricSystem = Settings.get("useMetricSystem");
+  function getDistance() as DataFieldResponse {
+    var useMetricSystem = Settings.getBoolean("useMetricSystem");
     var distance = ActivityMonitor.getInfo().distance;
 
     var value = "--";
@@ -105,45 +107,42 @@ module DataService {
  
     return {
       :icon => null,
-      :iconColor => Settings.get("colorValue"),
+      :iconColor => Settings.getColor("colorValue"),
       :value => value
     };
   }
 
-  function getSteps() {
+  function getSteps() as DataFieldResponse {
+    var value = ActivityMonitor.getInfo().steps;
     return {
       :icon => "steps",
-      :iconColor => Settings.get("colorValue"),
-      :value => ActivityMonitor.getInfo().steps
+      :iconColor => Settings.getColor("colorValue"),
+      :value => value != null ? value.toString() : "--"
     };
   }
 
-  function getStressScore() {
+  function getStressScore() as DataFieldResponse {
     var stressScore = ActivityMonitor.getInfo().stressScore;
-    var iconColor;
-
-    if (stressScore) {
-      iconColor = Settings.get("colorLow");
+    var iconColor = null;
+    if (stressScore != null) {
+      iconColor = Settings.getColor("colorLow");
       if (stressScore > 25) {
-        iconColor = Settings.get("colorModerate");
+        iconColor = Settings.getColor("colorModerate");
       } else if (stressScore > 50) {
-        iconColor = Settings.get("colorWarning");
+        iconColor = Settings.getColor("colorWarning");
       } else if (stressScore > 75) {
-        iconColor = Settings.get("colorAlert");
+        iconColor = Settings.getColor("colorAlert");
       } 
-    } else {
-      iconColor = Settings.get("colorValue");
-      stressScore = "--";
-    }
+    } 
 
     return {
       :icon => "stress",
-      :iconColor => iconColor,
-      :value => stressScore
+      :iconColor => iconColor != null ? iconColor : Settings.getColor("colorValue"),
+      :value => stressScore != null ? stressScore.toString() : "--"
     };
   }
 
-  function getTimeToRecovery() {
+  function getTimeToRecovery() as DataFieldResponse {
     var timeToRecovery = ActivityMonitor.getInfo().timeToRecovery;
     var value = ""; 
     if (timeToRecovery) {
@@ -154,12 +153,12 @@ module DataService {
 
     return {
       :icon => "recovery",
-      :iconColor => Settings.get("colorValue"),
+      :iconColor => Settings.getColor("colorValue"),
       :value => value
     };
   }
 
-  function getActiveMinutesDay() {
+  function getActiveMinutesDay() as DataFieldResponse {
     var totalMinutes = ActivityMonitor.getInfo().activeMinutesDay.total;
     var hours = totalMinutes / 60;
     var remainingMinutes = totalMinutes % 60;
@@ -168,12 +167,12 @@ module DataService {
 
     return {
       :icon => "clock",
-      :iconColor => Settings.get("colorValue"),
+      :iconColor => Settings.getColor("colorValue"),
       :value => value
     };
   }
 
-  function getBatteryStatus() {
+  function getBatteryStatus() as DataFieldResponse {
     var systemStats = System.getSystemStats();
     var batteryInPercent = systemStats.battery.toNumber();
     var batteryIcon = "";
@@ -192,14 +191,14 @@ module DataService {
       batteryIcon = "battery_1";
     }
     
-    var batteryColor = Settings.get("colorValue");
+    var batteryColor = Settings.getColor("colorValue");
     if (batteryInPercent < 10) {
-      batteryColor = Settings.get("colorAlert");
+      batteryColor = Settings.getColor("colorAlert");
     } else if (batteryInPercent < 20) {
-      batteryColor = Settings.get("colorWarning");
+      batteryColor = Settings.getColor("colorWarning");
     }
 
-    var usePercentage = Settings.get("useBatteryPercentage");
+    var usePercentage = Settings.getBoolean("useBatteryPercentage");
     var value = Lang.format("$1$$2$", [usePercentage ? systemStats.battery.toNumber() : systemStats.batteryInDays.toNumber(), usePercentage ? "%" : "d"]);
     return {
       :icon => batteryIcon,
@@ -208,16 +207,16 @@ module DataService {
     };
   }
 
-  function getCurrentTemperature() {
+  function getCurrentTemperature() as DataFieldResponse {
     var value = "--";
     var currentConditions = Weather.getCurrentConditions();
     if (currentConditions != null) {
-      var useMetricSystem = Settings.get("useMetricSystem");
+      var useMetricSystem = Settings.getBoolean("useMetricSystem");
       value = Lang.format("$1$", [useMetricSystem ?  currentConditions.temperature.toNumber() + " °C" : Utilities.celsiusToFahrenheit(currentConditions.temperature).toNumber() + " °F" ]);
     }
     return {
      :icon => null,
-      :iconColor => Settings.get("colorValue"),
+      :iconColor => Settings.getColor("colorValue"),
      :value => value
     };
   }
