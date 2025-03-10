@@ -49,9 +49,9 @@ module Settings {
     _settings["colorValue"] = Graphics.createColor(255, 140, 140, 140);
     _settings["colorGrayLight"] = Graphics.createColor(255, 110, 110, 110);
     _settings["colorGrayDark"] = Graphics.createColor(255, 80, 80, 80);
-    _settings["colorLow"] = Graphics.createColor(245, 160, 191, 65);
+    _settings["colorLow"] = Graphics.createColor(245, 207, 202, 178);
     _settings["colorModerate"] = Graphics.createColor(245, 179, 160, 66);
-    _settings["colorWarning"] = Graphics.createColor(245, 185, 102, 30);
+    _settings["colorWarning"] = Graphics.createColor(245, 224, 196, 54);
     _settings["colorAlert"] = Graphics.createColor(254, 185, 30, 30);
     _settings["colorTransparent"] = Graphics.COLOR_TRANSPARENT;
   

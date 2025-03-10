@@ -29,9 +29,14 @@ class TimeComponent extends WatchUi.Drawable {
     var clockTime = System.getClockTime();
     colorTheme = Settings.get("colorTheme");
 
-    if (!Settings.get("highPowerMode") && clockTime.min != lastMinute) {
-      generateOffset();
-      lastMinute = clockTime.min;
+    if (!Settings.get("highPowerMode")) {
+      if (clockTime.min != lastMinute) {
+        generateOffset();
+        lastMinute = clockTime.min;
+      }
+    } else {
+      xOffset = 0;
+      yOffset = 0;
     }
 
     drawHours(dc, clockTime);
@@ -94,7 +99,7 @@ class TimeComponent extends WatchUi.Drawable {
   }
 
   private function generateOffset() {
-    self.xOffset = Math.rand() % 11 - 5;
-    self.yOffset = Math.rand() % 11 - 5;
+    self.xOffset = (Math.rand() % 41) - 20;
+    self.yOffset = (Math.rand() % 41) - 20;
   }
 }
