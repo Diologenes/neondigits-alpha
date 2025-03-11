@@ -19,7 +19,7 @@ class TimeCircleComponent extends WatchUi.Drawable {
     _centerY = Settings.getNumber("centerY");
     _colorTransparent = Settings.getColor("colorTransparent");
     _colorTheme = Settings.getColor("colorTheme");
-    _radius = Settings.getNumber("width") / 2.0 - 3;
+    _radius = Settings.getNumber("width") / 2.0 - 4;
   }
 
   function draw(dc as Dc) {
