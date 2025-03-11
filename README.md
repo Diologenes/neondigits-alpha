@@ -1,5 +1,11 @@
 # Garmin Watch Face NeonDigits Alpha
 
+Simple watch face with configurable data fields for current temperature, heart rate, daily distance, calorie consumption, steps, etc.
+Seconds-Ring available in two variants (can be disabled).
+Various color schemes.
+
+### Device compatibility
+
 Customizable digital watchface for the following Garmin watches:
 
 - Approach S70 47mm
@@ -32,8 +38,7 @@ Customizable digital watchface for the following Garmin watches:
 
 ### Screenshot
 
-![WatchFace](./docs/watch-face-1.png)
-![WatchFace](./docs/watch-face-2.png)
+![WatchFace](./docs/header.png)
 
 ### Installation
 
