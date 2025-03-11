@@ -1,2 +1,8 @@
 project.manifest = manifest.xml
-compiler = "monkeyc"
+fenix847mm.resourcePath = $(fenix847mm.resourcePath);resources-launcher-65-65
+fr965.resourcePath = $(fr965.resourcePath);resources-launcher-65-65
+approachs7047mm.resourcePath = $(approachs7047mm.resourcePath);resources-launcher-70-70
+d2airx10.resourcePath = $(d2airx10.resourcePath);resources-launcher-70-70
+venu2.resourcePath = $(venu2.resourcePath);resources-launcher-70-70
+venu2plus.resourcePath = $(venu2plus.resourcePath);resources-launcher-70-70
+venu3.resourcePath = $(venu3.resourcePath);resources-launcher-70-70
