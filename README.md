@@ -1,4 +1,4 @@
-# Garmin Watch Face NeonDigits Alpha
+# Garmin Watch Face "neon digits alpha"
 
 Simple watch face with configurable data fields for current temperature, heart rate, daily distance, calorie consumption, steps, etc.
 Seconds-Ring available in two variants (can be disabled).
