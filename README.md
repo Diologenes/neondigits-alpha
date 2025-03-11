@@ -2,6 +2,8 @@
 
 Customizable digital watchface for the following Garmin watches:
 
+- Approach S70 47mm
+- D2 Air X10
 - Epix (Gen 2)
 - Epix Pro (Gen 2)
 - Fēnix 8 (43mm, 47mm, 51mm)

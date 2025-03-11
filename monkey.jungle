@@ -6,3 +6,4 @@ d2airx10.resourcePath = $(d2airx10.resourcePath);resources-launcher-70-70
 venu2.resourcePath = $(venu2.resourcePath);resources-launcher-70-70
 venu2plus.resourcePath = $(venu2plus.resourcePath);resources-launcher-70-70
 venu3.resourcePath = $(venu3.resourcePath);resources-launcher-70-70
+venu3s.resourcePath = $(venu3s.resourcePath);resources-launcher-70-70
