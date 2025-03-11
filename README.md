@@ -38,7 +38,7 @@ Customizable digital watchface for the following Garmin watches:
 
 ### Screenshot
 
-![WatchFace](./docs/header.png)
+![WatchFace](./docs/header.jpg)
 
 ### Installation
 
