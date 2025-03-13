@@ -42,7 +42,8 @@ Customizable digital watchface for the following Garmin watches:
 
 ### Installation
 
-Go to Connect IQ website to get the theme or follow the instructions on the Garmin Developer Website to learn how to compile this repo and generate the prg-File.
+Connect IQ: https://apps.garmin.com/apps/d04bf069-1910-484d-a309-21edd8e1aeea  
+Or follow the instructions on the Garmin Developer Website and learn how to compile this repo and generate the prg-File. 
 
 ### Resources
 
