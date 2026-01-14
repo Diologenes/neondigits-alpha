@@ -19,6 +19,7 @@ Customizable digital watchface for the following Garmin watches:
 - Venu 3S
 - Forerunner 265
 - Forerunner 965
+- Forerunner 970
 
 ### Features
 
